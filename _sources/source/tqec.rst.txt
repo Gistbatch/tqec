@@ -10,18 +10,11 @@ Subpackages
    tqec.circuit
    tqec.noise_models
    tqec.plaquette
+   tqec.sketchup
    tqec.templates
 
 Submodules
 ----------
-
-tqec.enums module
------------------
-
-.. automodule:: tqec.enums
-   :members:
-   :undoc-members:
-   :show-inheritance:
 
 tqec.exceptions module
 ----------------------

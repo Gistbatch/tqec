@@ -37,26 +37,26 @@ tqec.templates.display module
    :undoc-members:
    :show-inheritance:
 
+tqec.templates.enums module
+---------------------------
+
+.. automodule:: tqec.templates.enums
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+tqec.templates.interval module
+------------------------------
+
+.. automodule:: tqec.templates.interval
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 tqec.templates.scale module
 ---------------------------
 
 .. automodule:: tqec.templates.scale
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-tqec.templates.shifted module
------------------------------
-
-.. automodule:: tqec.templates.shifted
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-tqec.templates.stack module
----------------------------
-
-.. automodule:: tqec.templates.stack
    :members:
    :undoc-members:
    :show-inheritance:

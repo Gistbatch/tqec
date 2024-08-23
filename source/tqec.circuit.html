@@ -18,11 +18,10 @@
         <script src="../_static/documentation_options.js?v=5929fcd5"></script>
         <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="tqec.circuit.operations package" href="tqec.circuit.operations.html" />
-    <link rel="prev" title="tqec package" href="tqec.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,30 +43,13 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="tqec.html">tqec package</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="tqec.html#subpackages">Subpackages</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">tqec.circuit package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#subpackages">Subpackages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-tqec.circuit.circuit">tqec.circuit.circuit module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-tqec.circuit.schedule">tqec.circuit.schedule module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-tqec.circuit">Module contents</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detectors.html">Automatic detector computation</a></li>
 </ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.noise_models.html">tqec.noise_models package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.plaquette.html">tqec.plaquette package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html">tqec.templates package</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="tqec.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tqec.html#module-tqec.enums">tqec.enums module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tqec.html#module-tqec.exceptions">tqec.exceptions module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tqec.html#module-tqec.position">tqec.position module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tqec.html#module-contents">Module contents</a></li>
-</ul>
-</li>
+<p class="caption" role="heading"><span class="caption-text">Notebooks:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../media/detectors/detector_computation_illustration.html">Automatic detector computation</a></li>
 </ul>
 
         </div>
@@ -84,7 +66,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="tqec.html">tqec package</a></li>
       <li class="breadcrumb-item active">tqec.circuit package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/source/tqec.circuit.rst.txt" rel="nofollow"> View page source</a>
@@ -117,8 +98,18 @@
 <li class="toctree-l4"><a class="reference internal" href="tqec.circuit.operations.html#tqec.circuit.operations.operation.Detector.coordinates"><code class="docutils literal notranslate"><span class="pre">Detector.coordinates</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.circuit.operations.html#tqec.circuit.operations.operation.MX"><code class="docutils literal notranslate"><span class="pre">MX</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.operations.html#tqec.circuit.operations.operation.MX.qubits"><code class="docutils literal notranslate"><span class="pre">MX.qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.operations.html#tqec.circuit.operations.operation.MX.with_qubits"><code class="docutils literal notranslate"><span class="pre">MX.with_qubits()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="tqec.circuit.operations.html#tqec.circuit.operations.operation.Observable"><code class="docutils literal notranslate"><span class="pre">Observable</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="tqec.circuit.operations.html#tqec.circuit.operations.operation.Observable.index"><code class="docutils literal notranslate"><span class="pre">Observable.index</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.circuit.operations.html#tqec.circuit.operations.operation.RX"><code class="docutils literal notranslate"><span class="pre">RX</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.operations.html#tqec.circuit.operations.operation.RX.qubits"><code class="docutils literal notranslate"><span class="pre">RX.qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.operations.html#tqec.circuit.operations.operation.RX.with_qubits"><code class="docutils literal notranslate"><span class="pre">RX.with_qubits()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="tqec.circuit.operations.html#tqec.circuit.operations.operation.RelativeMeasurementData"><code class="docutils literal notranslate"><span class="pre">RelativeMeasurementData</span></code></a><ul>
@@ -161,8 +152,8 @@
 <span id="tqec-circuit-circuit-module"></span><h2>tqec.circuit.circuit module<a class="headerlink" href="#module-tqec.circuit.circuit" title="Link to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="tqec.circuit.circuit.generate_circuit">
-<span class="sig-name descname"><span class="pre">generate_circuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="tqec.templates.html#tqec.templates.base.Template" title="tqec.templates.base.Template"><span class="pre">Template</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">plaquettes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.plaquette.Plaquette" title="tqec.plaquette.plaquette.Plaquette"><span class="pre">Plaquette</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.plaquette.Plaquette" title="tqec.plaquette.plaquette.Plaquette"><span class="pre">Plaquette</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">cirq.Circuit</span></span></span><a class="reference internal" href="../_modules/tqec/circuit/circuit.html#generate_circuit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.circuit.circuit.generate_circuit" title="Link to this definition"></a></dt>
-<dd><p>Generate a quantum circuit from a template and its plaquettes</p>
+<span class="sig-name descname"><span class="pre">generate_circuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="tqec.templates.html#tqec.templates.base.Template" title="tqec.templates.base.Template"><span class="pre">Template</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">plaquettes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.plaquette.Plaquette" title="tqec.plaquette.plaquette.Plaquette"><span class="pre">Plaquette</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.plaquette.Plaquette" title="tqec.plaquette.plaquette.Plaquette"><span class="pre">Plaquette</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">defaultdict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.plaquette.Plaquette" title="tqec.plaquette.plaquette.Plaquette"><span class="pre">Plaquette</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Circuit</span></span></span><a class="reference internal" href="../_modules/tqec/circuit/circuit.html#generate_circuit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.circuit.circuit.generate_circuit" title="Link to this definition"></a></dt>
+<dd><p>Generate a quantum circuit from a template and its plaquettes.</p>
 <p>This is one of the core methods of the <cite>tqec</cite> package. It generates a quantum circuit
 from the description of the template that should be implemented as well as the plaquettes
 that should be used to instantiate the provided template.</p>
@@ -189,7 +180,37 @@ correction experiment represented by the provided inputs.</p>
 </dd>
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="tqec.html#tqec.exceptions.TQECException" title="tqec.exceptions.TQECException"><strong>TQECException</strong></a> – if <code class="docutils literal notranslate"><span class="pre">len(plaquettes)</span> <span class="pre">!=</span> <span class="pre">template.expected_plaquettes_number</span></code> or
-    if plaquettes is provided as a dicitonary and <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">in</span> <span class="pre">plaquettes</span></code>.</p>
+    if plaquettes is provided as a dictionary and <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">in</span> <span class="pre">plaquettes</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-tqec.circuit.observable_qubits">
+<span id="tqec-circuit-observable-qubits-module"></span><h2>tqec.circuit.observable_qubits module<a class="headerlink" href="#module-tqec.circuit.observable_qubits" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="tqec.circuit.observable_qubits.observable_qubits_from_template">
+<span class="sig-name descname"><span class="pre">observable_qubits_from_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="tqec.templates.html#tqec.templates.base.Template" title="tqec.templates.base.Template"><span class="pre">Template</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">plaquettes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.plaquette.Plaquette" title="tqec.plaquette.plaquette.Plaquette"><span class="pre">Plaquette</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.plaquette.Plaquette" title="tqec.plaquette.plaquette.Plaquette"><span class="pre">Plaquette</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateOrientation" title="tqec.templates.enums.TemplateOrientation"><span class="pre">TemplateOrientation</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">TemplateOrientation.HORIZONTAL</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">cirq.GridQubit</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/tqec/circuit/observable_qubits.html#observable_qubits_from_template"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.circuit.observable_qubits.observable_qubits_from_template" title="Link to this definition"></a></dt>
+<dd><p>Return the default observable qubits for the given template and its
+plaquettes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>template</strong> – The template to get the default observable qubits from.</p></li>
+<li><p><strong>plaquettes</strong> – The plaquettes to use to get the accurate positions of the observable qubits.</p></li>
+<li><p><strong>orientation</strong> – Whether to get the observable qubits from
+the horizontal or vertical midline. Defaults to horizontal.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="tqec.html#tqec.exceptions.TQECException" title="tqec.exceptions.TQECException"><strong>TQECException</strong></a> – If the number of plaquettes does not match the expected number.</p></li>
+<li><p><a class="reference internal" href="tqec.html#tqec.exceptions.TQECException" title="tqec.exceptions.TQECException"><strong>TQECException</strong></a> – If the plaquettes are provided as a dictionary and 0 is in the keys.</p></li>
+<li><p><a class="reference internal" href="tqec.html#tqec.exceptions.TQECException" title="tqec.exceptions.TQECException"><strong>TQECException</strong></a> – If the template does not have a definable midline.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The sequence of qubits and offsets for the observable qubits.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -199,7 +220,7 @@ correction experiment represented by the provided inputs.</p>
 <span id="tqec-circuit-schedule-module"></span><h2>tqec.circuit.schedule module<a class="headerlink" href="#module-tqec.circuit.schedule" title="Link to this heading"></a></h2>
 <dl class="py exception">
 <dt class="sig sig-object py" id="tqec.circuit.schedule.ScheduleCannotBeAppliedToCircuitException">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ScheduleCannotBeAppliedToCircuitException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schedule</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_non_virtual_moments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tqec/circuit/schedule.html#ScheduleCannotBeAppliedToCircuitException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.circuit.schedule.ScheduleCannotBeAppliedToCircuitException" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ScheduleCannotBeAppliedToCircuitException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Circuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schedule</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_non_virtual_moments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tqec/circuit/schedule.html#ScheduleCannotBeAppliedToCircuitException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.circuit.schedule.ScheduleCannotBeAppliedToCircuitException" title="Link to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#tqec.circuit.schedule.ScheduleException" title="tqec.circuit.schedule.ScheduleException"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScheduleException</span></code></a></p>
 </dd></dl>
 
@@ -223,7 +244,7 @@ correction experiment represented by the provided inputs.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="tqec.circuit.schedule.ScheduledCircuit">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ScheduledCircuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">cirq.Circuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schedule</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tqec/circuit/schedule.html#ScheduledCircuit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.circuit.schedule.ScheduledCircuit" title="Link to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ScheduledCircuit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">cirq.Circuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schedule</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tqec/circuit/schedule.html#ScheduledCircuit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.circuit.schedule.ScheduledCircuit" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Represent a quantum circuit with scheduled moments.</p>
 <p>This class aims at representing a Circuit instance that has all its moments
@@ -238,10 +259,12 @@ is virtual.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>circuit</strong> – the instance of Circuit that is scheduled.</p></li>
-<li><p><strong>schedule</strong> – a sorted list of time slices indices. The list should
-contain as many indices as there are non-virtual moments in the
-provided Circuit instance. If the list is None, it default to
-<cite>list(range(number_of_non_virtual_moments))</cite>.</p></li>
+<li><p><strong>schedule</strong> – a sorted list of time slices indices or an integer. If a list
+is given, it should contain as many indices as there are non-virtual
+moments in the provided Circuit instance. If an integer is provided,
+each non-virtual moment of the provided Circuit is scheduled
+sequentially, starting by the provided schedule:
+<cite>list(range(schedule, schedule + self._number_of_non_virtual_moments))</cite>.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
@@ -253,6 +276,21 @@ provided Circuit instance. If the list is None, it default to
 <span class="sig-name descname"><span class="pre">VIRTUAL_MOMENT_SCHEDULE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1000</span></em><a class="headerlink" href="#tqec.circuit.schedule.ScheduledCircuit.VIRTUAL_MOMENT_SCHEDULE" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="tqec.circuit.schedule.ScheduledCircuit.add_to_schedule_index">
+<span class="sig-name descname"><span class="pre">add_to_schedule_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schedule</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">moment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Moment</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/tqec/circuit/schedule.html#ScheduledCircuit.add_to_schedule_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.circuit.schedule.ScheduledCircuit.add_to_schedule_index" title="Link to this definition"></a></dt>
+<dd><p>Add the operations contained in the provided moment at the provided
+schedule.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>schedule</strong> – schedule at which operations in <cite>moment</cite> should be added.</p></li>
+<li><p><strong>moment</strong> – operations that should be added.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="tqec.circuit.schedule.ScheduledCircuit.detectors">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">detectors</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="tqec.circuit.operations.html#tqec.circuit.operations.operation.Detector" title="tqec.circuit.operations.operation.Detector"><span class="pre">Detector</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#tqec.circuit.schedule.ScheduledCircuit.detectors" title="Link to this definition"></a></dt>
@@ -262,7 +300,7 @@ provided Circuit instance. If the list is None, it default to
 <dl class="py method">
 <dt class="sig sig-object py" id="tqec.circuit.schedule.ScheduledCircuit.from_multi_qubit_moment_schedule">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_multi_qubit_moment_schedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Circuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multi_qubit_moment_schedule</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#tqec.circuit.schedule.ScheduledCircuit" title="tqec.circuit.schedule.ScheduledCircuit"><span class="pre">ScheduledCircuit</span></a></span></span><a class="reference internal" href="../_modules/tqec/circuit/schedule.html#ScheduledCircuit.from_multi_qubit_moment_schedule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.circuit.schedule.ScheduledCircuit.from_multi_qubit_moment_schedule" title="Link to this definition"></a></dt>
-<dd><p>Construct a ScheduledCircuit from scheduled multi-qubit gates</p>
+<dd><p>Construct a ScheduledCircuit from scheduled multi-qubit gates.</p>
 <p>This construction method basically auto-schedules single-qubit gates from
 the schedule of multi-qubit ones.</p>
 <dl class="field-list simple">
@@ -299,9 +337,9 @@ else self).</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="tqec.circuit.schedule.ScheduledCircuit.mappable_qubits">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mappable_qubits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">frozenset</span><span class="p"><span class="pre">[</span></span><span class="pre">GridQubit</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#tqec.circuit.schedule.ScheduledCircuit.mappable_qubits" title="Link to this definition"></a></dt>
-<dd><p>Return the set of qubits involved in the circuit that can be mapped, which is
-the union of the qubits of all the operations performed on and the origin of all
-the detectors.</p>
+<dd><p>Return the set of qubits involved in the circuit that can be mapped,
+which is the union of the qubits of all the operations performed on and
+the origin of all the detectors.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -332,12 +370,14 @@ the detectors.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="tqec.circuit.schedule.ScheduledCircuit.scheduled_moments">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scheduled_moments</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Moment</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#tqec.circuit.schedule.ScheduledCircuit.scheduled_moments" title="Link to this definition"></a></dt>
-<dd><p>Yields Moment instances with their computed schedule</p>
-<p>This property yields all the scheduled moments. Virtual moments are scheduled
-at the timeslice ScheduledCircuit.VIRTUAL_MOMENT_SCHEDULE.</p>
-<p>The yielded elements are <strong>NOT</strong> sorted with respect to their schedule.
-Removing all the virtual elements from the yielded items, the remaining elements
-are sorted with respect to their schedule.</p>
+<dd><p>Yields Moment instances with their computed schedule.</p>
+<p>This property yields all the scheduled moments. Virtual moments
+are scheduled at the timeslice
+<cite>ScheduledCircuit.VIRTUAL_MOMENT_SCHEDULE</cite>.</p>
+<p>The yielded elements are <strong>NOT</strong> sorted with respect to their
+schedule. Removing all the virtual elements from the yielded
+items, the remaining elements are sorted with respect to their
+schedule.</p>
 </dd></dl>
 
 </dd></dl>
@@ -376,7 +416,8 @@ circuit.</p>
 <dt class="sig sig-object py" id="tqec.circuit.schedule.ScheduledCircuits.has_pending_moment">
 <span class="sig-name descname"><span class="pre">has_pending_moment</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/tqec/circuit/schedule.html#ScheduledCircuits.has_pending_moment"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.circuit.schedule.ScheduledCircuits.has_pending_moment" title="Link to this definition"></a></dt>
 <dd><p>Checks if any of the managed instances has a pending moment.</p>
-<p>Any moment that has not been collected by using collect_moment is considered to be pending.</p>
+<p>Any moment that has not been collected by using collect_moment
+is considered to be pending.</p>
 </dd></dl>
 
 <dl class="py property">
@@ -389,7 +430,7 @@ circuit.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="tqec.circuit.schedule.merge_scheduled_circuits">
 <span class="sig-name descname"><span class="pre">merge_scheduled_circuits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#tqec.circuit.schedule.ScheduledCircuit" title="tqec.circuit.schedule.ScheduledCircuit"><span class="pre">ScheduledCircuit</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Circuit</span></span></span><a class="reference internal" href="../_modules/tqec/circuit/schedule.html#merge_scheduled_circuits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.circuit.schedule.merge_scheduled_circuits" title="Link to this definition"></a></dt>
-<dd><p>Merge several ScheduledCircuit instances into one cirq.Circuit instance</p>
+<dd><p>Merge several ScheduledCircuit instances into one cirq.Circuit instance.</p>
 <p>This function takes several scheduled circuits as input and merge them,
 respecting their schedules, into a unique cirq.Circuit instance that will
 then be returned to the caller.</p>
@@ -403,7 +444,7 @@ then be returned to the caller.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="tqec.circuit.schedule.remove_duplicate_operations">
 <span class="sig-name descname"><span class="pre">remove_duplicate_operations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Operation</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Operation</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/tqec/circuit/schedule.html#remove_duplicate_operations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.circuit.schedule.remove_duplicate_operations" title="Link to this definition"></a></dt>
-<dd><p>Removes all the duplicate mergeable operations from the given list</p>
+<dd><p>Removes all the duplicate mergeable operations from the given list.</p>
 <p>An instance of cirq.Operation is considered mergeable if it is tagged
 with the tag returned by Plaquette.get_mergeable_tag().
 If two operations in the provided list are considered equal <strong>AND</strong> are
@@ -426,10 +467,7 @@ removed from the list.</p>
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="tqec.html" class="btn btn-neutral float-left" title="tqec package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="tqec.circuit.operations.html" class="btn btn-neutral float-right" title="tqec.circuit.operations package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

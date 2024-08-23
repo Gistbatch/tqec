@@ -17,6 +17,7 @@
         <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
         <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -41,9 +42,13 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../detectors.html">Automatic detector computation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Notebooks:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../source/tqec.html">tqec package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../media/detectors/detector_computation_illustration.html">Automatic detector computation</a></li>
 </ul>
 
         </div>
@@ -73,7 +78,7 @@
   <h1>Source code for tqec.circuit.schedule</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">import</span> <span class="nn">numbers</span>
+<span class="kn">import</span> <span class="nn">bisect</span>
 <span class="kn">import</span> <span class="nn">typing</span>
 <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
 
@@ -119,13 +124,16 @@
 <div class="viewcode-block" id="ScheduleCannotBeAppliedToCircuitException">
 <a class="viewcode-back" href="../../../source/tqec.circuit.html#tqec.circuit.schedule.ScheduleCannotBeAppliedToCircuitException">[docs]</a>
 <span class="k">class</span> <span class="nc">ScheduleCannotBeAppliedToCircuitException</span><span class="p">(</span><span class="n">ScheduleException</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schedule</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">number_of_non_virtual_moments</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">circuit</span><span class="p">:</span> <span class="n">cirq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">,</span>
+        <span class="n">schedule</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+        <span class="n">number_of_non_virtual_moments</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;The provided schedule contains </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">schedule</span><span class="p">)</span><span class="si">}</span><span class="s2"> entries, but &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">number_of_non_virtual_moments</span><span class="si">}</span><span class="s2"> non-virtual moments have been found in the &quot;</span>
-                <span class="s2">&quot;provided circuit.&quot;</span>
-            <span class="p">)</span>
+            <span class="sa">f</span><span class="s2">&quot;The provided schedule contains </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">schedule</span><span class="p">)</span><span class="si">}</span><span class="s2"> entries, but &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">number_of_non_virtual_moments</span><span class="si">}</span><span class="s2"> non-virtual moments have been found in the &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;provided circuit:</span><span class="se">\n</span><span class="si">{</span><span class="n">circuit</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="p">)</span></div>
 
 
@@ -135,9 +143,7 @@
 <span class="k">class</span> <span class="nc">ScheduledCircuit</span><span class="p">:</span>
     <span class="n">VIRTUAL_MOMENT_SCHEDULE</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">:</span> <span class="n">cirq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">,</span> <span class="n">schedule</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">:</span> <span class="n">cirq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">,</span> <span class="n">schedule</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Represent a quantum circuit with scheduled moments.</span>
 
 <span class="sd">        This class aims at representing a Circuit instance that has all its moments</span>
@@ -153,10 +159,12 @@
 
 <span class="sd">        Args:</span>
 <span class="sd">            circuit: the instance of Circuit that is scheduled.</span>
-<span class="sd">            schedule: a sorted list of time slices indices. The list should</span>
-<span class="sd">                contain as many indices as there are non-virtual moments in the</span>
-<span class="sd">                provided Circuit instance. If the list is None, it default to</span>
-<span class="sd">                `list(range(number_of_non_virtual_moments))`.</span>
+<span class="sd">            schedule: a sorted list of time slices indices or an integer. If a list</span>
+<span class="sd">                is given, it should contain as many indices as there are non-virtual</span>
+<span class="sd">                moments in the provided Circuit instance. If an integer is provided,</span>
+<span class="sd">                each non-virtual moment of the provided Circuit is scheduled</span>
+<span class="sd">                sequentially, starting by the provided schedule:</span>
+<span class="sd">                `list(range(schedule, schedule + self._number_of_non_virtual_moments))`.</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            ScheduleError: if the provided schedule is invalid.</span>
@@ -166,18 +174,21 @@
             <span class="k">for</span> <span class="n">moment</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">moments</span>
         <span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_number_of_non_virtual_moments</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_is_non_virtual_moment_list</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">schedule</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">schedule</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_number_of_non_virtual_moments</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">schedule</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="n">schedule</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+                <span class="nb">range</span><span class="p">(</span><span class="n">schedule</span><span class="p">,</span> <span class="n">schedule</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_number_of_non_virtual_moments</span><span class="p">)</span>
+            <span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">ScheduledCircuit</span><span class="o">.</span><span class="n">_check_input_validity</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">schedule</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_raw_circuit</span><span class="p">:</span> <span class="n">cirq</span><span class="o">.</span><span class="n">Circuit</span> <span class="o">=</span> <span class="n">circuit</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_schedule</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">schedule</span> <span class="o">=</span> <span class="n">schedule</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_schedule</span><span class="p">(</span><span class="n">schedule</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_check_input_validity</span><span class="p">(</span><span class="n">circuit</span><span class="p">:</span> <span class="n">cirq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">,</span> <span class="n">schedule</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Asserts that the given inputs are valid to construct a ScheduledCircuit instance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Asserts that the given inputs are valid to construct a</span>
+<span class="sd">        ScheduledCircuit instance.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            schedule: the schedule to check.</span>
@@ -204,7 +215,7 @@
 
         <span class="c1"># Check that all entries in the provided schedule are integers.</span>
         <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">schedule</span><span class="p">:</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Integral</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">entry</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="n">ScheduleWithNonIntegerEntriesException</span><span class="p">(</span><span class="n">schedule</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">entry</span><span class="p">))</span>
 
         <span class="c1"># Check that the schedule is sorted.</span>
@@ -241,7 +252,7 @@
         <span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">schedule</span><span class="p">)</span> <span class="o">!=</span> <span class="n">non_virtual_moments_number</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">ScheduleCannotBeAppliedToCircuitException</span><span class="p">(</span>
-                <span class="n">schedule</span><span class="p">,</span> <span class="n">non_virtual_moments_number</span>
+                <span class="n">circuit</span><span class="p">,</span> <span class="n">schedule</span><span class="p">,</span> <span class="n">non_virtual_moments_number</span>
             <span class="p">)</span>
 
 <div class="viewcode-block" id="ScheduledCircuit.from_multi_qubit_moment_schedule">
@@ -249,8 +260,8 @@
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">from_multi_qubit_moment_schedule</span><span class="p">(</span>
         <span class="n">circuit</span><span class="p">:</span> <span class="n">cirq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">,</span> <span class="n">multi_qubit_moment_schedule</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ScheduledCircuit&quot;</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct a ScheduledCircuit from scheduled multi-qubit gates</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ScheduledCircuit</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Construct a ScheduledCircuit from scheduled multi-qubit gates.</span>
 
 <span class="sd">        This construction method basically auto-schedules single-qubit gates from</span>
 <span class="sd">        the schedule of multi-qubit ones.</span>
@@ -308,14 +319,17 @@
         <span class="k">return</span> <span class="n">ScheduledCircuit</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">final_schedule</span><span class="p">)</span></div>
 
 
+    <span class="k">def</span> <span class="nf">_set_schedule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_schedule</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ScheduledCircuit</span><span class="o">.</span><span class="n">_check_input_validity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_circuit</span><span class="p">,</span> <span class="n">new_schedule</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_schedule</span> <span class="o">=</span> <span class="n">new_schedule</span>
+
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">schedule</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_schedule</span>
 
     <span class="nd">@schedule</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">schedule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_schedule</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">ScheduledCircuit</span><span class="o">.</span><span class="n">_check_input_validity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_circuit</span><span class="p">,</span> <span class="n">new_schedule</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_schedule</span> <span class="o">=</span> <span class="n">new_schedule</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_schedule</span><span class="p">(</span><span class="n">new_schedule</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">raw_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">cirq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">:</span>
@@ -330,26 +344,25 @@
     <span class="k">def</span> <span class="nf">detectors</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Detector</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the list of all the detectors in the circuit.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">[</span>
-            <span class="n">typing</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">Detector</span><span class="p">,</span> <span class="n">op</span><span class="o">.</span><span class="n">untagged</span><span class="p">)</span>
+            <span class="n">op</span><span class="o">.</span><span class="n">untagged</span>
             <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_circuit</span><span class="o">.</span><span class="n">all_operations</span><span class="p">()</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">untagged</span><span class="p">,</span> <span class="n">Detector</span><span class="p">)</span>
         <span class="p">]</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">mappable_qubits</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">frozenset</span><span class="p">[</span><span class="n">cirq</span><span class="o">.</span><span class="n">GridQubit</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the set of qubits involved in the circuit that can be mapped, which is</span>
-<span class="sd">        the union of the qubits of all the operations performed on and the origin of all</span>
-<span class="sd">        the detectors.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the set of qubits involved in the circuit that can be mapped,</span>
+<span class="sd">        which is the union of the qubits of all the operations performed on and</span>
+<span class="sd">        the origin of all the detectors.&quot;&quot;&quot;</span>
         <span class="n">operation_qubits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qubits</span>
-        <span class="n">detector_origins</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">detector</span><span class="o">.</span><span class="n">origin</span> <span class="k">for</span> <span class="n">detector</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">detectors</span><span class="p">)</span>
+        <span class="n">detector_origins</span> <span class="o">=</span> <span class="p">{</span><span class="n">detector</span><span class="o">.</span><span class="n">origin</span> <span class="k">for</span> <span class="n">detector</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">detectors</span><span class="p">}</span>
         <span class="k">return</span> <span class="nb">frozenset</span><span class="p">(</span><span class="n">operation_qubits</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">detector_origins</span><span class="p">))</span>
 
 <div class="viewcode-block" id="ScheduledCircuit.map_to_qubits">
 <a class="viewcode-back" href="../../../source/tqec.circuit.html#tqec.circuit.schedule.ScheduledCircuit.map_to_qubits">[docs]</a>
     <span class="k">def</span> <span class="nf">map_to_qubits</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">qubit_map</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">cirq</span><span class="o">.</span><span class="n">GridQubit</span><span class="p">,</span> <span class="n">cirq</span><span class="o">.</span><span class="n">GridQubit</span><span class="p">],</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ScheduledCircuit&quot;</span><span class="p">:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ScheduledCircuit</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Map the qubits the ScheduledCircuit instance is applied on.</span>
 
 <span class="sd">        This method forwards most of its logic to the underlying raw_circuit</span>
@@ -389,13 +402,13 @@
         <span class="k">return</span> <span class="n">operand</span></div>
 
 
-    <span class="k">def</span> <span class="nf">__copy__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ScheduledCircuit&quot;</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__copy__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ScheduledCircuit</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">ScheduledCircuit</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_raw_circuit</span><span class="p">,</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_schedule</span><span class="p">,</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__deepcopy__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memo</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;ScheduledCircuit&quot;</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__deepcopy__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memo</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">ScheduledCircuit</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">ScheduledCircuit</span><span class="p">(</span>
             <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_raw_circuit</span><span class="p">,</span> <span class="n">memo</span><span class="o">=</span><span class="n">memo</span><span class="p">),</span>
             <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_schedule</span><span class="p">,</span> <span class="n">memo</span><span class="o">=</span><span class="n">memo</span><span class="p">),</span>
@@ -403,14 +416,16 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">scheduled_moments</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Iterator</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">cirq</span><span class="o">.</span><span class="n">Moment</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Yields Moment instances with their computed schedule</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Yields Moment instances with their computed schedule.</span>
 
-<span class="sd">        This property yields all the scheduled moments. Virtual moments are scheduled</span>
-<span class="sd">        at the timeslice ScheduledCircuit.VIRTUAL_MOMENT_SCHEDULE.</span>
+<span class="sd">        This property yields all the scheduled moments. Virtual moments</span>
+<span class="sd">        are scheduled at the timeslice</span>
+<span class="sd">        `ScheduledCircuit.VIRTUAL_MOMENT_SCHEDULE`.</span>
 
-<span class="sd">        The yielded elements are **NOT** sorted with respect to their schedule.</span>
-<span class="sd">        Removing all the virtual elements from the yielded items, the remaining elements</span>
-<span class="sd">        are sorted with respect to their schedule.</span>
+<span class="sd">        The yielded elements are **NOT** sorted with respect to their</span>
+<span class="sd">        schedule. Removing all the virtual elements from the yielded</span>
+<span class="sd">        items, the remaining elements are sorted with respect to their</span>
+<span class="sd">        schedule.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">non_virtual_moment_index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">moment</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">moments</span><span class="p">):</span>
@@ -445,7 +460,52 @@
                 <span class="ow">not</span> <span class="n">ScheduledCircuit</span><span class="o">.</span><span class="n">_is_virtual_moment</span><span class="p">(</span><span class="n">moment</span><span class="p">)</span>
                 <span class="k">for</span> <span class="n">moment</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">moments</span>
             <span class="p">]</span>
-        <span class="p">)</span></div>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="ScheduledCircuit.add_to_schedule_index">
+<a class="viewcode-back" href="../../../source/tqec.circuit.html#tqec.circuit.schedule.ScheduledCircuit.add_to_schedule_index">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_to_schedule_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schedule</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">moment</span><span class="p">:</span> <span class="n">cirq</span><span class="o">.</span><span class="n">Moment</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add the operations contained in the provided moment at the provided</span>
+<span class="sd">        schedule.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            schedule: schedule at which operations in `moment` should be added.</span>
+<span class="sd">            moment: operations that should be added.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Performing a self.schedule.index, but handling the ValueError is tedious.</span>
+        <span class="n">schedule_index</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sched</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_schedule</span><span class="p">)</span> <span class="k">if</span> <span class="n">sched</span> <span class="o">==</span> <span class="n">schedule</span><span class="p">),</span> <span class="kc">None</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">schedule_index</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># We have to insert a new schedule and a new Moment.</span>
+            <span class="n">insertion_index</span> <span class="o">=</span> <span class="n">bisect</span><span class="o">.</span><span class="n">bisect_left</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_schedule</span><span class="p">,</span> <span class="n">schedule</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_schedule</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">insertion_index</span><span class="p">,</span> <span class="n">schedule</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_raw_circuit</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">insertion_index</span><span class="p">,</span> <span class="n">moment</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_number_of_non_virtual_moments</span> <span class="o">+=</span> <span class="n">ScheduledCircuit</span><span class="o">.</span><span class="n">_is_virtual_moment</span><span class="p">(</span>
+                <span class="n">moment</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Else, the schedule already exists, in which case we just need to add the</span>
+            <span class="c1"># operations to an existing moment. Note that this might fail if two</span>
+            <span class="c1"># operations overlap.</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">was_virtual_moment</span> <span class="o">=</span> <span class="n">ScheduledCircuit</span><span class="o">.</span><span class="n">_is_virtual_moment</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_raw_circuit</span><span class="p">[</span><span class="n">schedule_index</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_raw_circuit</span><span class="p">[</span><span class="n">schedule_index</span><span class="p">]</span> <span class="o">+=</span> <span class="n">moment</span>
+                <span class="n">is_virtual_moment</span> <span class="o">=</span> <span class="n">ScheduledCircuit</span><span class="o">.</span><span class="n">_is_virtual_moment</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_raw_circuit</span><span class="p">[</span><span class="n">schedule_index</span><span class="p">]</span>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_number_of_non_virtual_moments</span> <span class="o">+=</span> <span class="p">(</span>
+                    <span class="ow">not</span> <span class="n">was_virtual_moment</span> <span class="ow">and</span> <span class="n">is_virtual_moment</span>
+                <span class="p">)</span>
+            <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">TQECException</span><span class="p">(</span>
+                    <span class="s2">&quot;Trying to merge two Moment instances that overlap.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Existing:</span><span class="se">\n</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_raw_circuit</span><span class="p">[</span><span class="n">schedule_index</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Trying to add:</span><span class="se">\n</span><span class="si">{</span><span class="n">moment</span><span class="si">}</span><span class="s2">.&quot;</span>
+                <span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span></div>
+</div>
 
 
 
@@ -472,21 +532,25 @@
     <span class="k">def</span> <span class="nf">has_pending_moment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks if any of the managed instances has a pending moment.</span>
 
-<span class="sd">        Any moment that has not been collected by using collect_moment is considered to be pending.</span>
+<span class="sd">        Any moment that has not been collected by using collect_moment</span>
+<span class="sd">        is considered to be pending.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_has_pending_moment</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_circuits</span><span class="p">)))</span></div>
 
 
     <span class="k">def</span> <span class="nf">_has_pending_moment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if the managed instance at the given index has a pending operation.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if the managed instance at the given index has a pending</span>
+<span class="sd">        operation.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_moments</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">_peek_scheduled_moment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">cirq</span><span class="o">.</span><span class="n">Moment</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Recover **without collecting** the pending operation for the instance at the given index.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Recover **without collecting** the pending operation for the</span>
+<span class="sd">        instance at the given index.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_current_moments</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">_pop_scheduled_moment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">cirq</span><span class="o">.</span><span class="n">Moment</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Recover and mark as collected the pending moment for the instance at the given index.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Recover and mark as collected the pending moment for the instance at</span>
+<span class="sd">        the given index.</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            AssertionError: if not self.has_pending_operation(index).</span>
@@ -545,7 +609,7 @@
 <span class="k">def</span> <span class="nf">remove_duplicate_operations</span><span class="p">(</span>
     <span class="n">operations</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">cirq</span><span class="o">.</span><span class="n">Operation</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">cirq</span><span class="o">.</span><span class="n">Operation</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Removes all the duplicate mergeable operations from the given list</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Removes all the duplicate mergeable operations from the given list.</span>
 
 <span class="sd">    An instance of cirq.Operation is considered mergeable if it is tagged</span>
 <span class="sd">    with the tag returned by Plaquette.get_mergeable_tag().</span>
@@ -581,7 +645,7 @@
 <div class="viewcode-block" id="merge_scheduled_circuits">
 <a class="viewcode-back" href="../../../source/tqec.circuit.html#tqec.circuit.schedule.merge_scheduled_circuits">[docs]</a>
 <span class="k">def</span> <span class="nf">merge_scheduled_circuits</span><span class="p">(</span><span class="n">circuits</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ScheduledCircuit</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">cirq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Merge several ScheduledCircuit instances into one cirq.Circuit instance</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Merge several ScheduledCircuit instances into one cirq.Circuit instance.</span>
 
 <span class="sd">    This function takes several scheduled circuits as input and merge them,</span>
 <span class="sd">    respecting their schedules, into a unique cirq.Circuit instance that will</span>

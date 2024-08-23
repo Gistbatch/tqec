@@ -18,11 +18,10 @@
         <script src="../_static/documentation_options.js?v=5929fcd5"></script>
         <script src="../_static/doctools.js?v=9a2dae69"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="tqec.circuit package" href="tqec.circuit.html" />
-    <link rel="prev" title="TQEC" href="../index.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,76 +43,13 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">tqec package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tqec.circuit.html">tqec.circuit package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.noise_models.html">tqec.noise_models package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.plaquette.html">tqec.plaquette package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html">tqec.templates package</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../detectors.html">Automatic detector computation</a></li>
 </ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-tqec.enums">tqec.enums module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#tqec.enums.CornerPositionEnum"><code class="docutils literal notranslate"><span class="pre">CornerPositionEnum</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.enums.CornerPositionEnum.LOWER_LEFT"><code class="docutils literal notranslate"><span class="pre">CornerPositionEnum.LOWER_LEFT</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.enums.CornerPositionEnum.LOWER_RIGHT"><code class="docutils literal notranslate"><span class="pre">CornerPositionEnum.LOWER_RIGHT</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.enums.CornerPositionEnum.UPPER_LEFT"><code class="docutils literal notranslate"><span class="pre">CornerPositionEnum.UPPER_LEFT</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.enums.CornerPositionEnum.UPPER_RIGHT"><code class="docutils literal notranslate"><span class="pre">CornerPositionEnum.UPPER_RIGHT</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#tqec.enums.PlaquetteOrientation"><code class="docutils literal notranslate"><span class="pre">PlaquetteOrientation</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.enums.PlaquetteOrientation.DOWN"><code class="docutils literal notranslate"><span class="pre">PlaquetteOrientation.DOWN</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.enums.PlaquetteOrientation.LEFT"><code class="docutils literal notranslate"><span class="pre">PlaquetteOrientation.LEFT</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.enums.PlaquetteOrientation.RIGHT"><code class="docutils literal notranslate"><span class="pre">PlaquetteOrientation.RIGHT</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.enums.PlaquetteOrientation.UP"><code class="docutils literal notranslate"><span class="pre">PlaquetteOrientation.UP</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.enums.PlaquetteOrientation.to_plaquette_side"><code class="docutils literal notranslate"><span class="pre">PlaquetteOrientation.to_plaquette_side()</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#tqec.enums.PlaquetteSide"><code class="docutils literal notranslate"><span class="pre">PlaquetteSide</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.enums.PlaquetteSide.DOWN"><code class="docutils literal notranslate"><span class="pre">PlaquetteSide.DOWN</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.enums.PlaquetteSide.LEFT"><code class="docutils literal notranslate"><span class="pre">PlaquetteSide.LEFT</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.enums.PlaquetteSide.RIGHT"><code class="docutils literal notranslate"><span class="pre">PlaquetteSide.RIGHT</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.enums.PlaquetteSide.UP"><code class="docutils literal notranslate"><span class="pre">PlaquetteSide.UP</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#tqec.enums.TemplateRelativePositionEnum"><code class="docutils literal notranslate"><span class="pre">TemplateRelativePositionEnum</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.enums.TemplateRelativePositionEnum.ABOVE_OF"><code class="docutils literal notranslate"><span class="pre">TemplateRelativePositionEnum.ABOVE_OF</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.enums.TemplateRelativePositionEnum.BELOW_OF"><code class="docutils literal notranslate"><span class="pre">TemplateRelativePositionEnum.BELOW_OF</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.enums.TemplateRelativePositionEnum.LEFT_OF"><code class="docutils literal notranslate"><span class="pre">TemplateRelativePositionEnum.LEFT_OF</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.enums.TemplateRelativePositionEnum.RIGHT_OF"><code class="docutils literal notranslate"><span class="pre">TemplateRelativePositionEnum.RIGHT_OF</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-tqec.exceptions">tqec.exceptions module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#tqec.exceptions.TQECException"><code class="docutils literal notranslate"><span class="pre">TQECException</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-tqec.position">tqec.position module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#tqec.position.Displacement"><code class="docutils literal notranslate"><span class="pre">Displacement</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.position.Displacement.x"><code class="docutils literal notranslate"><span class="pre">Displacement.x</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.position.Displacement.y"><code class="docutils literal notranslate"><span class="pre">Displacement.y</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#tqec.position.Position"><code class="docutils literal notranslate"><span class="pre">Position</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.position.Position.to_grid_qubit"><code class="docutils literal notranslate"><span class="pre">Position.to_grid_qubit()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.position.Position.x"><code class="docutils literal notranslate"><span class="pre">Position.x</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.position.Position.y"><code class="docutils literal notranslate"><span class="pre">Position.y</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#tqec.position.Shape2D"><code class="docutils literal notranslate"><span class="pre">Shape2D</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.position.Shape2D.to_numpy_shape"><code class="docutils literal notranslate"><span class="pre">Shape2D.to_numpy_shape()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.position.Shape2D.x"><code class="docutils literal notranslate"><span class="pre">Shape2D.x</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#tqec.position.Shape2D.y"><code class="docutils literal notranslate"><span class="pre">Shape2D.y</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#module-contents">Module contents</a></li>
-</ul>
-</li>
+<p class="caption" role="heading"><span class="caption-text">Notebooks:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../media/detectors/detector_computation_illustration.html">Automatic detector computation</a></li>
 </ul>
 
         </div>
@@ -163,6 +99,10 @@
 <li class="toctree-l3"><a class="reference internal" href="tqec.circuit.html#tqec.circuit.circuit.generate_circuit"><code class="docutils literal notranslate"><span class="pre">generate_circuit()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.circuit.html#module-tqec.circuit.observable_qubits">tqec.circuit.observable_qubits module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tqec.circuit.html#tqec.circuit.observable_qubits.observable_qubits_from_template"><code class="docutils literal notranslate"><span class="pre">observable_qubits_from_template()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="tqec.circuit.html#module-tqec.circuit.schedule">tqec.circuit.schedule module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tqec.circuit.html#tqec.circuit.schedule.ScheduleCannotBeAppliedToCircuitException"><code class="docutils literal notranslate"><span class="pre">ScheduleCannotBeAppliedToCircuitException</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="tqec.circuit.html#tqec.circuit.schedule.ScheduleEntryTooLowException"><code class="docutils literal notranslate"><span class="pre">ScheduleEntryTooLowException</span></code></a></li>
@@ -170,6 +110,7 @@
 <li class="toctree-l3"><a class="reference internal" href="tqec.circuit.html#tqec.circuit.schedule.ScheduleWithNonIntegerEntriesException"><code class="docutils literal notranslate"><span class="pre">ScheduleWithNonIntegerEntriesException</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="tqec.circuit.html#tqec.circuit.schedule.ScheduledCircuit"><code class="docutils literal notranslate"><span class="pre">ScheduledCircuit</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="tqec.circuit.html#tqec.circuit.schedule.ScheduledCircuit.VIRTUAL_MOMENT_SCHEDULE"><code class="docutils literal notranslate"><span class="pre">ScheduledCircuit.VIRTUAL_MOMENT_SCHEDULE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.circuit.html#tqec.circuit.schedule.ScheduledCircuit.add_to_schedule_index"><code class="docutils literal notranslate"><span class="pre">ScheduledCircuit.add_to_schedule_index()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.circuit.html#tqec.circuit.schedule.ScheduledCircuit.detectors"><code class="docutils literal notranslate"><span class="pre">ScheduledCircuit.detectors</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.circuit.html#tqec.circuit.schedule.ScheduledCircuit.from_multi_qubit_moment_schedule"><code class="docutils literal notranslate"><span class="pre">ScheduledCircuit.from_multi_qubit_moment_schedule()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.circuit.html#tqec.circuit.schedule.ScheduledCircuit.map_to_qubits"><code class="docutils literal notranslate"><span class="pre">ScheduledCircuit.map_to_qubits()</span></code></a></li>
@@ -271,17 +212,32 @@
 <li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.library.html#module-tqec.plaquette.library.empty">tqec.plaquette.library.empty module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.library.html#module-tqec.plaquette.library.initialisation">tqec.plaquette.library.initialisation module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.library.html#module-tqec.plaquette.library.measurement">tqec.plaquette.library.measurement module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.library.html#module-tqec.plaquette.library.memory">tqec.plaquette.library.memory module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.library.html#module-tqec.plaquette.library.pauli">tqec.plaquette.library.pauli module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.library.html#module-tqec.plaquette.library.xx">tqec.plaquette.library.xx module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.library.html#module-tqec.plaquette.library.xxxx">tqec.plaquette.library.xxxx module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.library.html#module-tqec.plaquette.library.zz">tqec.plaquette.library.zz module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.library.html#module-tqec.plaquette.library.zzzz">tqec.plaquette.library.zzzz module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.library.html#module-tqec.plaquette.library">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tqec.plaquette.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.plaquette.html#module-tqec.plaquette.enums">tqec.plaquette.enums module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.enums.PlaquetteOrientation"><code class="docutils literal notranslate"><span class="pre">PlaquetteOrientation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.enums.PlaquetteOrientation.DOWN"><code class="docutils literal notranslate"><span class="pre">PlaquetteOrientation.DOWN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.enums.PlaquetteOrientation.LEFT"><code class="docutils literal notranslate"><span class="pre">PlaquetteOrientation.LEFT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.enums.PlaquetteOrientation.RIGHT"><code class="docutils literal notranslate"><span class="pre">PlaquetteOrientation.RIGHT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.enums.PlaquetteOrientation.UP"><code class="docutils literal notranslate"><span class="pre">PlaquetteOrientation.UP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.enums.PlaquetteOrientation.to_plaquette_side"><code class="docutils literal notranslate"><span class="pre">PlaquetteOrientation.to_plaquette_side()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.enums.PlaquetteSide"><code class="docutils literal notranslate"><span class="pre">PlaquetteSide</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.enums.PlaquetteSide.DOWN"><code class="docutils literal notranslate"><span class="pre">PlaquetteSide.DOWN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.enums.PlaquetteSide.LEFT"><code class="docutils literal notranslate"><span class="pre">PlaquetteSide.LEFT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.enums.PlaquetteSide.RIGHT"><code class="docutils literal notranslate"><span class="pre">PlaquetteSide.RIGHT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.enums.PlaquetteSide.UP"><code class="docutils literal notranslate"><span class="pre">PlaquetteSide.UP</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="tqec.plaquette.html#module-tqec.plaquette.plaquette">tqec.plaquette.plaquette module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.plaquette.Plaquette"><code class="docutils literal notranslate"><span class="pre">Plaquette</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.plaquette.Plaquette.circuit"><code class="docutils literal notranslate"><span class="pre">Plaquette.circuit</span></code></a></li>
@@ -302,6 +258,8 @@
 <li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.qubit.PlaquetteQubits.data_qubits"><code class="docutils literal notranslate"><span class="pre">PlaquetteQubits.data_qubits</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.qubit.PlaquetteQubits.get_data_qubits"><code class="docutils literal notranslate"><span class="pre">PlaquetteQubits.get_data_qubits()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.qubit.PlaquetteQubits.get_data_qubits_cirq"><code class="docutils literal notranslate"><span class="pre">PlaquetteQubits.get_data_qubits_cirq()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.qubit.PlaquetteQubits.get_edge_qubits"><code class="docutils literal notranslate"><span class="pre">PlaquetteQubits.get_edge_qubits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.qubit.PlaquetteQubits.get_qubits_on_side"><code class="docutils literal notranslate"><span class="pre">PlaquetteQubits.get_qubits_on_side()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.qubit.PlaquetteQubits.get_syndrome_qubits"><code class="docutils literal notranslate"><span class="pre">PlaquetteQubits.get_syndrome_qubits()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.qubit.PlaquetteQubits.get_syndrome_qubits_cirq"><code class="docutils literal notranslate"><span class="pre">PlaquetteQubits.get_syndrome_qubits_cirq()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.plaquette.html#tqec.plaquette.qubit.PlaquetteQubits.permute_data_qubits"><code class="docutils literal notranslate"><span class="pre">PlaquetteQubits.permute_data_qubits()</span></code></a></li>
@@ -316,6 +274,202 @@
 <li class="toctree-l2"><a class="reference internal" href="tqec.plaquette.html#module-tqec.plaquette">Module contents</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="tqec.sketchup.html">tqec.sketchup package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tqec.sketchup.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.sketchup.html#module-tqec.sketchup.block_graph">tqec.sketchup.block_graph module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph"><code class="docutils literal notranslate"><span class="pre">BlockGraph</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph.__contains__"><code class="docutils literal notranslate"><span class="pre">BlockGraph.__contains__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph.add_cube"><code class="docutils literal notranslate"><span class="pre">BlockGraph.add_cube()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph.add_pipe"><code class="docutils literal notranslate"><span class="pre">BlockGraph.add_pipe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph.check_validity"><code class="docutils literal notranslate"><span class="pre">BlockGraph.check_validity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph.cubes"><code class="docutils literal notranslate"><span class="pre">BlockGraph.cubes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph.display"><code class="docutils literal notranslate"><span class="pre">BlockGraph.display()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph.from_dae_file"><code class="docutils literal notranslate"><span class="pre">BlockGraph.from_dae_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph.from_zx_graph"><code class="docutils literal notranslate"><span class="pre">BlockGraph.from_zx_graph()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph.get_cube"><code class="docutils literal notranslate"><span class="pre">BlockGraph.get_cube()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph.get_pipe"><code class="docutils literal notranslate"><span class="pre">BlockGraph.get_pipe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph.name"><code class="docutils literal notranslate"><span class="pre">BlockGraph.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph.num_cubes"><code class="docutils literal notranslate"><span class="pre">BlockGraph.num_cubes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph.num_pipes"><code class="docutils literal notranslate"><span class="pre">BlockGraph.num_pipes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph.pipes"><code class="docutils literal notranslate"><span class="pre">BlockGraph.pipes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph.pipes_at"><code class="docutils literal notranslate"><span class="pre">BlockGraph.pipes_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph.to_dae_file"><code class="docutils literal notranslate"><span class="pre">BlockGraph.to_dae_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockGraph.to_zx_graph"><code class="docutils literal notranslate"><span class="pre">BlockGraph.to_zx_graph()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.BlockType"><code class="docutils literal notranslate"><span class="pre">BlockType</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Color"><code class="docutils literal notranslate"><span class="pre">Color</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Color.NULL"><code class="docutils literal notranslate"><span class="pre">Color.NULL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Color.X"><code class="docutils literal notranslate"><span class="pre">Color.X</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Color.Z"><code class="docutils literal notranslate"><span class="pre">Color.Z</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Color.is_null"><code class="docutils literal notranslate"><span class="pre">Color.is_null</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Color3D"><code class="docutils literal notranslate"><span class="pre">Color3D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Color3D.from_string"><code class="docutils literal notranslate"><span class="pre">Color3D.from_string()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Color3D.is_null"><code class="docutils literal notranslate"><span class="pre">Color3D.is_null</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Color3D.match"><code class="docutils literal notranslate"><span class="pre">Color3D.match()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Color3D.null"><code class="docutils literal notranslate"><span class="pre">Color3D.null()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Color3D.pop_color_at_direction"><code class="docutils literal notranslate"><span class="pre">Color3D.pop_color_at_direction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Color3D.push_color_at_direction"><code class="docutils literal notranslate"><span class="pre">Color3D.push_color_at_direction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Color3D.x"><code class="docutils literal notranslate"><span class="pre">Color3D.x</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Color3D.y"><code class="docutils literal notranslate"><span class="pre">Color3D.y</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Color3D.z"><code class="docutils literal notranslate"><span class="pre">Color3D.z</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Cube"><code class="docutils literal notranslate"><span class="pre">Cube</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Cube.cube_type"><code class="docutils literal notranslate"><span class="pre">Cube.cube_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Cube.is_virtual"><code class="docutils literal notranslate"><span class="pre">Cube.is_virtual</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Cube.position"><code class="docutils literal notranslate"><span class="pre">Cube.position</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.CubeType"><code class="docutils literal notranslate"><span class="pre">CubeType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.CubeType.VIRTUAL"><code class="docutils literal notranslate"><span class="pre">CubeType.VIRTUAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.CubeType.XXZ"><code class="docutils literal notranslate"><span class="pre">CubeType.XXZ</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.CubeType.XZX"><code class="docutils literal notranslate"><span class="pre">CubeType.XZX</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.CubeType.XZZ"><code class="docutils literal notranslate"><span class="pre">CubeType.XZZ</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.CubeType.ZXX"><code class="docutils literal notranslate"><span class="pre">CubeType.ZXX</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.CubeType.ZXZ"><code class="docutils literal notranslate"><span class="pre">CubeType.ZXZ</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.CubeType.ZZX"><code class="docutils literal notranslate"><span class="pre">CubeType.ZZX</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.CubeType.from_color"><code class="docutils literal notranslate"><span class="pre">CubeType.from_color()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.CubeType.get_color"><code class="docutils literal notranslate"><span class="pre">CubeType.get_color()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.CubeType.infer_pipe_type_at_direction"><code class="docutils literal notranslate"><span class="pre">CubeType.infer_pipe_type_at_direction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.CubeType.normal_direction_to_corner_plane"><code class="docutils literal notranslate"><span class="pre">CubeType.normal_direction_to_corner_plane()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.CubeType.to_zx_node_type"><code class="docutils literal notranslate"><span class="pre">CubeType.to_zx_node_type()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Pipe"><code class="docutils literal notranslate"><span class="pre">Pipe</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Pipe.direction"><code class="docutils literal notranslate"><span class="pre">Pipe.direction</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Pipe.pipe_type"><code class="docutils literal notranslate"><span class="pre">Pipe.pipe_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Pipe.u"><code class="docutils literal notranslate"><span class="pre">Pipe.u</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.Pipe.v"><code class="docutils literal notranslate"><span class="pre">Pipe.v</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType"><code class="docutils literal notranslate"><span class="pre">PipeType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType.OXZ"><code class="docutils literal notranslate"><span class="pre">PipeType.OXZ</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType.OXZH"><code class="docutils literal notranslate"><span class="pre">PipeType.OXZH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType.OZX"><code class="docutils literal notranslate"><span class="pre">PipeType.OZX</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType.OZXH"><code class="docutils literal notranslate"><span class="pre">PipeType.OZXH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType.XOZ"><code class="docutils literal notranslate"><span class="pre">PipeType.XOZ</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType.XOZH"><code class="docutils literal notranslate"><span class="pre">PipeType.XOZH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType.XZO"><code class="docutils literal notranslate"><span class="pre">PipeType.XZO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType.XZOH"><code class="docutils literal notranslate"><span class="pre">PipeType.XZOH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType.ZOX"><code class="docutils literal notranslate"><span class="pre">PipeType.ZOX</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType.ZOXH"><code class="docutils literal notranslate"><span class="pre">PipeType.ZOXH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType.ZXO"><code class="docutils literal notranslate"><span class="pre">PipeType.ZXO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType.ZXOH"><code class="docutils literal notranslate"><span class="pre">PipeType.ZXOH</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType.direction"><code class="docutils literal notranslate"><span class="pre">PipeType.direction</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType.from_color_at_side"><code class="docutils literal notranslate"><span class="pre">PipeType.from_color_at_side()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType.get_color_at_side"><code class="docutils literal notranslate"><span class="pre">PipeType.get_color_at_side()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType.has_hadamard"><code class="docutils literal notranslate"><span class="pre">PipeType.has_hadamard</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.block_graph.PipeType.infer_cube_type_at_side"><code class="docutils literal notranslate"><span class="pre">PipeType.infer_cube_type_at_side()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.sketchup.html#module-tqec.sketchup.collada">tqec.sketchup.collada module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.collada.ColladaDisplayHelper"><code class="docutils literal notranslate"><span class="pre">ColladaDisplayHelper</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.collada.ColladaDisplayHelper.HTML_TEMPLATE"><code class="docutils literal notranslate"><span class="pre">ColladaDisplayHelper.HTML_TEMPLATE</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.collada.Transformation"><code class="docutils literal notranslate"><span class="pre">Transformation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.collada.Transformation.translation"><code class="docutils literal notranslate"><span class="pre">Transformation.translation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.collada.Transformation.scale"><code class="docutils literal notranslate"><span class="pre">Transformation.scale</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.collada.Transformation.rotation"><code class="docutils literal notranslate"><span class="pre">Transformation.rotation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.collada.Transformation.affine_matrix"><code class="docutils literal notranslate"><span class="pre">Transformation.affine_matrix</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#id0"><code class="docutils literal notranslate"><span class="pre">Transformation.affine_matrix</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.collada.Transformation.from_4d_affine_matrix"><code class="docutils literal notranslate"><span class="pre">Transformation.from_4d_affine_matrix()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#id1"><code class="docutils literal notranslate"><span class="pre">Transformation.rotation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#id2"><code class="docutils literal notranslate"><span class="pre">Transformation.scale</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#id3"><code class="docutils literal notranslate"><span class="pre">Transformation.translation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.collada.display_collada_model"><code class="docutils literal notranslate"><span class="pre">display_collada_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.collada.read_block_graph_from_dae_file"><code class="docutils literal notranslate"><span class="pre">read_block_graph_from_dae_file()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.collada.write_block_graph_to_dae_file"><code class="docutils literal notranslate"><span class="pre">write_block_graph_to_dae_file()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.sketchup.html#module-tqec.sketchup.geometry">tqec.sketchup.geometry module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.Face"><code class="docutils literal notranslate"><span class="pre">Face</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.Face.face_type"><code class="docutils literal notranslate"><span class="pre">Face.face_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.Face.width"><code class="docutils literal notranslate"><span class="pre">Face.width</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.Face.height"><code class="docutils literal notranslate"><span class="pre">Face.height</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.Face.normal_direction"><code class="docutils literal notranslate"><span class="pre">Face.normal_direction</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.Face.positive_facing"><code class="docutils literal notranslate"><span class="pre">Face.positive_facing</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.Face.translation"><code class="docutils literal notranslate"><span class="pre">Face.translation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#id4"><code class="docutils literal notranslate"><span class="pre">Face.face_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.Face.get_normal_vectors"><code class="docutils literal notranslate"><span class="pre">Face.get_normal_vectors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.Face.get_triangle_indices"><code class="docutils literal notranslate"><span class="pre">Face.get_triangle_indices()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.Face.get_vertices"><code class="docutils literal notranslate"><span class="pre">Face.get_vertices()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#id5"><code class="docutils literal notranslate"><span class="pre">Face.height</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#id6"><code class="docutils literal notranslate"><span class="pre">Face.normal_direction</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#id7"><code class="docutils literal notranslate"><span class="pre">Face.positive_facing</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.Face.translated_by"><code class="docutils literal notranslate"><span class="pre">Face.translated_by()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#id8"><code class="docutils literal notranslate"><span class="pre">Face.translation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#id9"><code class="docutils literal notranslate"><span class="pre">Face.width</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.Face.with_opposite_facing"><code class="docutils literal notranslate"><span class="pre">Face.with_opposite_facing()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.FaceType"><code class="docutils literal notranslate"><span class="pre">FaceType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.FaceType.H"><code class="docutils literal notranslate"><span class="pre">FaceType.H</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.FaceType.X"><code class="docutils literal notranslate"><span class="pre">FaceType.X</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.FaceType.Z"><code class="docutils literal notranslate"><span class="pre">FaceType.Z</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.FaceType.from_string"><code class="docutils literal notranslate"><span class="pre">FaceType.from_string()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.FaceType.opposite"><code class="docutils literal notranslate"><span class="pre">FaceType.opposite()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.load_library_block_geometries"><code class="docutils literal notranslate"><span class="pre">load_library_block_geometries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.geometry.parse_block_type_from_str"><code class="docutils literal notranslate"><span class="pre">parse_block_type_from_str()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.sketchup.html#module-tqec.sketchup.zx_graph">tqec.sketchup.zx_graph module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.NodeType"><code class="docutils literal notranslate"><span class="pre">NodeType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.NodeType.V"><code class="docutils literal notranslate"><span class="pre">NodeType.V</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.NodeType.X"><code class="docutils literal notranslate"><span class="pre">NodeType.X</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.NodeType.Z"><code class="docutils literal notranslate"><span class="pre">NodeType.Z</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.NodeType.dual"><code class="docutils literal notranslate"><span class="pre">NodeType.dual()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXEdge"><code class="docutils literal notranslate"><span class="pre">ZXEdge</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXEdge.direction"><code class="docutils literal notranslate"><span class="pre">ZXEdge.direction</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXEdge.has_hadamard"><code class="docutils literal notranslate"><span class="pre">ZXEdge.has_hadamard</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXEdge.u"><code class="docutils literal notranslate"><span class="pre">ZXEdge.u</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXEdge.v"><code class="docutils literal notranslate"><span class="pre">ZXEdge.v</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph"><code class="docutils literal notranslate"><span class="pre">ZXGraph</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.add_edge"><code class="docutils literal notranslate"><span class="pre">ZXGraph.add_edge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.add_node"><code class="docutils literal notranslate"><span class="pre">ZXGraph.add_node()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.add_virtual_node"><code class="docutils literal notranslate"><span class="pre">ZXGraph.add_virtual_node()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.add_x_node"><code class="docutils literal notranslate"><span class="pre">ZXGraph.add_x_node()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.add_z_node"><code class="docutils literal notranslate"><span class="pre">ZXGraph.add_z_node()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.draw"><code class="docutils literal notranslate"><span class="pre">ZXGraph.draw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.edges"><code class="docutils literal notranslate"><span class="pre">ZXGraph.edges</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.edges_at"><code class="docutils literal notranslate"><span class="pre">ZXGraph.edges_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.find_correlation_subgraphs"><code class="docutils literal notranslate"><span class="pre">ZXGraph.find_correlation_subgraphs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.get_edge"><code class="docutils literal notranslate"><span class="pre">ZXGraph.get_edge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.get_node"><code class="docutils literal notranslate"><span class="pre">ZXGraph.get_node()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.isolated_nodes"><code class="docutils literal notranslate"><span class="pre">ZXGraph.isolated_nodes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.leaf_nodes"><code class="docutils literal notranslate"><span class="pre">ZXGraph.leaf_nodes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.name"><code class="docutils literal notranslate"><span class="pre">ZXGraph.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.nodes"><code class="docutils literal notranslate"><span class="pre">ZXGraph.nodes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.num_edges"><code class="docutils literal notranslate"><span class="pre">ZXGraph.num_edges</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.num_nodes"><code class="docutils literal notranslate"><span class="pre">ZXGraph.num_nodes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.nx_graph"><code class="docutils literal notranslate"><span class="pre">ZXGraph.nx_graph</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXGraph.to_block_graph"><code class="docutils literal notranslate"><span class="pre">ZXGraph.to_block_graph()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXNode"><code class="docutils literal notranslate"><span class="pre">ZXNode</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXNode.is_virtual"><code class="docutils literal notranslate"><span class="pre">ZXNode.is_virtual</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXNode.node_type"><code class="docutils literal notranslate"><span class="pre">ZXNode.node_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.sketchup.html#tqec.sketchup.zx_graph.ZXNode.position"><code class="docutils literal notranslate"><span class="pre">ZXNode.position</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.sketchup.html#module-tqec.sketchup">Module contents</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="tqec.templates.html">tqec.templates package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tqec.templates.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tqec.templates.atomic.html">tqec.templates.atomic package</a><ul>
@@ -328,6 +482,7 @@
 <li class="toctree-l3"><a class="reference internal" href="tqec.templates.constructions.html">tqec.templates.constructions package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.constructions.html#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.constructions.html#module-tqec.templates.constructions.corner">tqec.templates.constructions.corner module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.constructions.html#module-tqec.templates.constructions.grid">tqec.templates.constructions.grid module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.constructions.html#module-tqec.templates.constructions.qubit">tqec.templates.constructions.qubit module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.constructions.html#module-tqec.templates.constructions">Module contents</a></li>
 </ul>
@@ -336,18 +491,15 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tqec.templates.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tqec.templates.html#module-tqec.templates.base">tqec.templates.base module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.base.JSONEncodable"><code class="docutils literal notranslate"><span class="pre">JSONEncodable</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.base.JSONEncodable.to_dict"><code class="docutils literal notranslate"><span class="pre">JSONEncodable.to_dict()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.base.JSONEncodable.to_json"><code class="docutils literal notranslate"><span class="pre">JSONEncodable.to_json()</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.base.Template"><code class="docutils literal notranslate"><span class="pre">Template</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.base.Template.expected_plaquettes_number"><code class="docutils literal notranslate"><span class="pre">Template.expected_plaquettes_number</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.base.Template.get_increments"><code class="docutils literal notranslate"><span class="pre">Template.get_increments()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.base.Template.get_midline_plaquettes"><code class="docutils literal notranslate"><span class="pre">Template.get_midline_plaquettes()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.base.Template.instantiate"><code class="docutils literal notranslate"><span class="pre">Template.instantiate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.base.Template.k"><code class="docutils literal notranslate"><span class="pre">Template.k</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.base.Template.scalable_shape"><code class="docutils literal notranslate"><span class="pre">Template.scalable_shape</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.base.Template.scale_to"><code class="docutils literal notranslate"><span class="pre">Template.scale_to()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.base.Template.shape"><code class="docutils literal notranslate"><span class="pre">Template.shape</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.base.Template.to_dict"><code class="docutils literal notranslate"><span class="pre">Template.to_dict()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.base.TemplateWithIndices"><code class="docutils literal notranslate"><span class="pre">TemplateWithIndices</span></code></a><ul>
@@ -363,16 +515,18 @@
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.composed.ComposedTemplate.add_relation"><code class="docutils literal notranslate"><span class="pre">ComposedTemplate.add_relation()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.composed.ComposedTemplate.add_template"><code class="docutils literal notranslate"><span class="pre">ComposedTemplate.add_template()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.composed.ComposedTemplate.add_templates"><code class="docutils literal notranslate"><span class="pre">ComposedTemplate.add_templates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.composed.ComposedTemplate.assert_is_valid"><code class="docutils literal notranslate"><span class="pre">ComposedTemplate.assert_is_valid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.composed.ComposedTemplate.collapsing_templates"><code class="docutils literal notranslate"><span class="pre">ComposedTemplate.collapsing_templates()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.composed.ComposedTemplate.default_increments"><code class="docutils literal notranslate"><span class="pre">ComposedTemplate.default_increments</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.composed.ComposedTemplate.expected_plaquettes_number"><code class="docutils literal notranslate"><span class="pre">ComposedTemplate.expected_plaquettes_number</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.composed.ComposedTemplate.get_midline_plaquettes"><code class="docutils literal notranslate"><span class="pre">ComposedTemplate.get_midline_plaquettes()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.composed.ComposedTemplate.instantiate"><code class="docutils literal notranslate"><span class="pre">ComposedTemplate.instantiate()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.composed.ComposedTemplate.is_empty"><code class="docutils literal notranslate"><span class="pre">ComposedTemplate.is_empty</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.composed.ComposedTemplate.is_valid"><code class="docutils literal notranslate"><span class="pre">ComposedTemplate.is_valid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.composed.ComposedTemplate.scalable_shape"><code class="docutils literal notranslate"><span class="pre">ComposedTemplate.scalable_shape</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.composed.ComposedTemplate.scale_to"><code class="docutils literal notranslate"><span class="pre">ComposedTemplate.scale_to()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.composed.ComposedTemplate.shape"><code class="docutils literal notranslate"><span class="pre">ComposedTemplate.shape</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.composed.ComposedTemplate.to_dict"><code class="docutils literal notranslate"><span class="pre">ComposedTemplate.to_dict()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.composed.get_corner_position"><code class="docutils literal notranslate"><span class="pre">get_corner_position()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tqec.templates.html#module-tqec.templates.display">tqec.templates.display module</a><ul>
@@ -381,52 +535,127 @@
 <li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.display.display_templates_svg"><code class="docutils literal notranslate"><span class="pre">display_templates_svg()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tqec.templates.html#module-tqec.templates.scale">tqec.templates.scale module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.Dimension"><code class="docutils literal notranslate"><span class="pre">Dimension</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.Dimension.scale_to"><code class="docutils literal notranslate"><span class="pre">Dimension.scale_to()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.Dimension.to_dict"><code class="docutils literal notranslate"><span class="pre">Dimension.to_dict()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.Dimension.value"><code class="docutils literal notranslate"><span class="pre">Dimension.value</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.templates.html#module-tqec.templates.enums">tqec.templates.enums module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.Axis"><code class="docutils literal notranslate"><span class="pre">Axis</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.Axis.X"><code class="docutils literal notranslate"><span class="pre">Axis.X</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.Axis.Y"><code class="docutils literal notranslate"><span class="pre">Axis.Y</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.FixedDimension"><code class="docutils literal notranslate"><span class="pre">FixedDimension</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.CornerPositionEnum"><code class="docutils literal notranslate"><span class="pre">CornerPositionEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.CornerPositionEnum.LOWER_LEFT"><code class="docutils literal notranslate"><span class="pre">CornerPositionEnum.LOWER_LEFT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.CornerPositionEnum.LOWER_RIGHT"><code class="docutils literal notranslate"><span class="pre">CornerPositionEnum.LOWER_RIGHT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.CornerPositionEnum.UPPER_LEFT"><code class="docutils literal notranslate"><span class="pre">CornerPositionEnum.UPPER_LEFT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.CornerPositionEnum.UPPER_RIGHT"><code class="docutils literal notranslate"><span class="pre">CornerPositionEnum.UPPER_RIGHT</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateOrientation"><code class="docutils literal notranslate"><span class="pre">TemplateOrientation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateOrientation.HORIZONTAL"><code class="docutils literal notranslate"><span class="pre">TemplateOrientation.HORIZONTAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateOrientation.VERTICAL"><code class="docutils literal notranslate"><span class="pre">TemplateOrientation.VERTICAL</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateRelativePositionEnum"><code class="docutils literal notranslate"><span class="pre">TemplateRelativePositionEnum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateRelativePositionEnum.ABOVE_OF"><code class="docutils literal notranslate"><span class="pre">TemplateRelativePositionEnum.ABOVE_OF</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateRelativePositionEnum.BELOW_OF"><code class="docutils literal notranslate"><span class="pre">TemplateRelativePositionEnum.BELOW_OF</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateRelativePositionEnum.LEFT_OF"><code class="docutils literal notranslate"><span class="pre">TemplateRelativePositionEnum.LEFT_OF</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateRelativePositionEnum.RIGHT_OF"><code class="docutils literal notranslate"><span class="pre">TemplateRelativePositionEnum.RIGHT_OF</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateSide"><code class="docutils literal notranslate"><span class="pre">TemplateSide</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateSide.BOTTOM"><code class="docutils literal notranslate"><span class="pre">TemplateSide.BOTTOM</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateSide.BOTTOM_LEFT"><code class="docutils literal notranslate"><span class="pre">TemplateSide.BOTTOM_LEFT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateSide.BOTTOM_RIGHT"><code class="docutils literal notranslate"><span class="pre">TemplateSide.BOTTOM_RIGHT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateSide.LEFT"><code class="docutils literal notranslate"><span class="pre">TemplateSide.LEFT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateSide.RIGHT"><code class="docutils literal notranslate"><span class="pre">TemplateSide.RIGHT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateSide.TOP"><code class="docutils literal notranslate"><span class="pre">TemplateSide.TOP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateSide.TOP_LEFT"><code class="docutils literal notranslate"><span class="pre">TemplateSide.TOP_LEFT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.enums.TemplateSide.TOP_RIGHT"><code class="docutils literal notranslate"><span class="pre">TemplateSide.TOP_RIGHT</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.templates.html#module-tqec.templates.interval">tqec.templates.interval module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Interval"><code class="docutils literal notranslate"><span class="pre">Interval</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Interval.complement"><code class="docutils literal notranslate"><span class="pre">Interval.complement()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Interval.contains"><code class="docutils literal notranslate"><span class="pre">Interval.contains()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Interval.end"><code class="docutils literal notranslate"><span class="pre">Interval.end</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Interval.end_excluded"><code class="docutils literal notranslate"><span class="pre">Interval.end_excluded</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Interval.intersection"><code class="docutils literal notranslate"><span class="pre">Interval.intersection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Interval.is_disjoint"><code class="docutils literal notranslate"><span class="pre">Interval.is_disjoint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Interval.is_empty"><code class="docutils literal notranslate"><span class="pre">Interval.is_empty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Interval.overlaps_with"><code class="docutils literal notranslate"><span class="pre">Interval.overlaps_with()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Interval.start"><code class="docutils literal notranslate"><span class="pre">Interval.start</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Interval.start_excluded"><code class="docutils literal notranslate"><span class="pre">Interval.start_excluded</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Interval.union"><code class="docutils literal notranslate"><span class="pre">Interval.union()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Intervals"><code class="docutils literal notranslate"><span class="pre">Intervals</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Intervals.complement"><code class="docutils literal notranslate"><span class="pre">Intervals.complement()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Intervals.contains"><code class="docutils literal notranslate"><span class="pre">Intervals.contains()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Intervals.intersection"><code class="docutils literal notranslate"><span class="pre">Intervals.intersection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Intervals.intervals"><code class="docutils literal notranslate"><span class="pre">Intervals.intervals</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Intervals.is_empty"><code class="docutils literal notranslate"><span class="pre">Intervals.is_empty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.interval.Intervals.union"><code class="docutils literal notranslate"><span class="pre">Intervals.union()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tqec.templates.html#module-tqec.templates.scale">tqec.templates.scale module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.LinearFunction"><code class="docutils literal notranslate"><span class="pre">LinearFunction</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.LinearFunction.invert"><code class="docutils literal notranslate"><span class="pre">LinearFunction.invert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.LinearFunction.__add__"><code class="docutils literal notranslate"><span class="pre">LinearFunction.__add__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.LinearFunction.__call__"><code class="docutils literal notranslate"><span class="pre">LinearFunction.__call__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.LinearFunction.__le__"><code class="docutils literal notranslate"><span class="pre">LinearFunction.__le__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.LinearFunction.__lt__"><code class="docutils literal notranslate"><span class="pre">LinearFunction.__lt__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.LinearFunction.__mul__"><code class="docutils literal notranslate"><span class="pre">LinearFunction.__mul__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.LinearFunction.__rmul__"><code class="docutils literal notranslate"><span class="pre">LinearFunction.__rmul__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.LinearFunction.__sub__"><code class="docutils literal notranslate"><span class="pre">LinearFunction.__sub__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.LinearFunction.intersection"><code class="docutils literal notranslate"><span class="pre">LinearFunction.intersection()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.LinearFunction.offset"><code class="docutils literal notranslate"><span class="pre">LinearFunction.offset</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.LinearFunction.slope"><code class="docutils literal notranslate"><span class="pre">LinearFunction.slope</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.LinearFunction.to_dict"><code class="docutils literal notranslate"><span class="pre">LinearFunction.to_dict()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.PiecewiseLinearFunction"><code class="docutils literal notranslate"><span class="pre">PiecewiseLinearFunction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.PiecewiseLinearFunction.__call__"><code class="docutils literal notranslate"><span class="pre">PiecewiseLinearFunction.__call__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.PiecewiseLinearFunction.__post_init__"><code class="docutils literal notranslate"><span class="pre">PiecewiseLinearFunction.__post_init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.PiecewiseLinearFunction.from_linear_function"><code class="docutils literal notranslate"><span class="pre">PiecewiseLinearFunction.from_linear_function()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.PiecewiseLinearFunction.functions"><code class="docutils literal notranslate"><span class="pre">PiecewiseLinearFunction.functions</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.PiecewiseLinearFunction.max"><code class="docutils literal notranslate"><span class="pre">PiecewiseLinearFunction.max()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.PiecewiseLinearFunction.min"><code class="docutils literal notranslate"><span class="pre">PiecewiseLinearFunction.min()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.PiecewiseLinearFunction.separators"><code class="docutils literal notranslate"><span class="pre">PiecewiseLinearFunction.separators</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.PiecewiseLinearFunction.simplify"><code class="docutils literal notranslate"><span class="pre">PiecewiseLinearFunction.simplify()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.PiecewiseLinearFunction.simplify_positive"><code class="docutils literal notranslate"><span class="pre">PiecewiseLinearFunction.simplify_positive()</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tqec.templates.html#module-tqec.templates.shifted">tqec.templates.shifted module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.shifted.ScalableOffset"><code class="docutils literal notranslate"><span class="pre">ScalableOffset</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.shifted.ScalableOffset.scale_to"><code class="docutils literal notranslate"><span class="pre">ScalableOffset.scale_to()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.shifted.ScalableOffset.to_dict"><code class="docutils literal notranslate"><span class="pre">ScalableOffset.to_dict()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.shifted.ScalableOffset.x"><code class="docutils literal notranslate"><span class="pre">ScalableOffset.x</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.shifted.ScalableOffset.y"><code class="docutils literal notranslate"><span class="pre">ScalableOffset.y</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.Scalable2D"><code class="docutils literal notranslate"><span class="pre">Scalable2D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.Scalable2D.simplify"><code class="docutils literal notranslate"><span class="pre">Scalable2D.simplify()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.Scalable2D.simplify_positive"><code class="docutils literal notranslate"><span class="pre">Scalable2D.simplify_positive()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.Scalable2D.to_numpy_shape"><code class="docutils literal notranslate"><span class="pre">Scalable2D.to_numpy_shape()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.Scalable2D.to_shape_2d"><code class="docutils literal notranslate"><span class="pre">Scalable2D.to_shape_2d()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.Scalable2D.x"><code class="docutils literal notranslate"><span class="pre">Scalable2D.x</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.Scalable2D.y"><code class="docutils literal notranslate"><span class="pre">Scalable2D.y</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.shifted.ShiftedTemplate"><code class="docutils literal notranslate"><span class="pre">ShiftedTemplate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.shifted.ShiftedTemplate.expected_plaquettes_number"><code class="docutils literal notranslate"><span class="pre">ShiftedTemplate.expected_plaquettes_number</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.shifted.ShiftedTemplate.instantiate"><code class="docutils literal notranslate"><span class="pre">ShiftedTemplate.instantiate()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.shifted.ShiftedTemplate.scale_to"><code class="docutils literal notranslate"><span class="pre">ShiftedTemplate.scale_to()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.shifted.ShiftedTemplate.shape"><code class="docutils literal notranslate"><span class="pre">ShiftedTemplate.shape</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.shifted.ShiftedTemplate.to_dict"><code class="docutils literal notranslate"><span class="pre">ShiftedTemplate.to_dict()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.ScalableBoundingBox"><code class="docutils literal notranslate"><span class="pre">ScalableBoundingBox</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.ScalableBoundingBox.br"><code class="docutils literal notranslate"><span class="pre">ScalableBoundingBox.br</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.ScalableBoundingBox.corners"><code class="docutils literal notranslate"><span class="pre">ScalableBoundingBox.corners</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.ScalableBoundingBox.height"><code class="docutils literal notranslate"><span class="pre">ScalableBoundingBox.height</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.ScalableBoundingBox.inside"><code class="docutils literal notranslate"><span class="pre">ScalableBoundingBox.inside()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.ScalableBoundingBox.intersect"><code class="docutils literal notranslate"><span class="pre">ScalableBoundingBox.intersect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.ScalableBoundingBox.possible_inputs"><code class="docutils literal notranslate"><span class="pre">ScalableBoundingBox.possible_inputs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.ScalableBoundingBox.ul"><code class="docutils literal notranslate"><span class="pre">ScalableBoundingBox.ul</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.ScalableBoundingBox.width"><code class="docutils literal notranslate"><span class="pre">ScalableBoundingBox.width</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.ScalableInterval"><code class="docutils literal notranslate"><span class="pre">ScalableInterval</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.ScalableInterval.end"><code class="docutils literal notranslate"><span class="pre">ScalableInterval.end</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.ScalableInterval.intersection"><code class="docutils literal notranslate"><span class="pre">ScalableInterval.intersection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.ScalableInterval.is_empty"><code class="docutils literal notranslate"><span class="pre">ScalableInterval.is_empty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.ScalableInterval.non_empty_on"><code class="docutils literal notranslate"><span class="pre">ScalableInterval.non_empty_on()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.ScalableInterval.start"><code class="docutils literal notranslate"><span class="pre">ScalableInterval.start</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.ScalableInterval.width"><code class="docutils literal notranslate"><span class="pre">ScalableInterval.width</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tqec.templates.html#module-tqec.templates.stack">tqec.templates.stack module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.stack.StackedTemplate"><code class="docutils literal notranslate"><span class="pre">StackedTemplate</span></code></a><ul>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.stack.StackedTemplate.expected_plaquettes_number"><code class="docutils literal notranslate"><span class="pre">StackedTemplate.expected_plaquettes_number</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.stack.StackedTemplate.instantiate"><code class="docutils literal notranslate"><span class="pre">StackedTemplate.instantiate()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.stack.StackedTemplate.pop_template_from_top"><code class="docutils literal notranslate"><span class="pre">StackedTemplate.pop_template_from_top()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.stack.StackedTemplate.push_template_on_top"><code class="docutils literal notranslate"><span class="pre">StackedTemplate.push_template_on_top()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.stack.StackedTemplate.scale_to"><code class="docutils literal notranslate"><span class="pre">StackedTemplate.scale_to()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.stack.StackedTemplate.shape"><code class="docutils literal notranslate"><span class="pre">StackedTemplate.shape</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="tqec.templates.html#tqec.templates.stack.StackedTemplate.to_dict"><code class="docutils literal notranslate"><span class="pre">StackedTemplate.to_dict()</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.intervals_from_separators"><code class="docutils literal notranslate"><span class="pre">intervals_from_separators()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tqec.templates.html#tqec.templates.scale.round_or_fail"><code class="docutils literal notranslate"><span class="pre">round_or_fail()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tqec.templates.html#module-tqec.templates">Module contents</a></li>
@@ -438,129 +667,6 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
 </section>
-<section id="module-tqec.enums">
-<span id="tqec-enums-module"></span><h2>tqec.enums module<a class="headerlink" href="#module-tqec.enums" title="Link to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="tqec.enums.CornerPositionEnum">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CornerPositionEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tqec/enums.html#CornerPositionEnum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.enums.CornerPositionEnum" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
-<p>Represents a corner.</p>
-<p>Corner positions are stored as coordinates in the coordinate system with:
-- the origin on the upper-left corner
-- the X-axis that goes from the origin to the upper-right corner
-- the Y-axis that goes from the origin to the lower-left corner</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tqec.enums.CornerPositionEnum.LOWER_LEFT">
-<span class="sig-name descname"><span class="pre">LOWER_LEFT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Position(x=0,</span> <span class="pre">y=1)</span></em><a class="headerlink" href="#tqec.enums.CornerPositionEnum.LOWER_LEFT" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tqec.enums.CornerPositionEnum.LOWER_RIGHT">
-<span class="sig-name descname"><span class="pre">LOWER_RIGHT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Position(x=1,</span> <span class="pre">y=1)</span></em><a class="headerlink" href="#tqec.enums.CornerPositionEnum.LOWER_RIGHT" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tqec.enums.CornerPositionEnum.UPPER_LEFT">
-<span class="sig-name descname"><span class="pre">UPPER_LEFT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Position(x=0,</span> <span class="pre">y=0)</span></em><a class="headerlink" href="#tqec.enums.CornerPositionEnum.UPPER_LEFT" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tqec.enums.CornerPositionEnum.UPPER_RIGHT">
-<span class="sig-name descname"><span class="pre">UPPER_RIGHT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Position(x=1,</span> <span class="pre">y=0)</span></em><a class="headerlink" href="#tqec.enums.CornerPositionEnum.UPPER_RIGHT" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="tqec.enums.PlaquetteOrientation">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PlaquetteOrientation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tqec/enums.html#PlaquetteOrientation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.enums.PlaquetteOrientation" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
-<p>An enumeration.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tqec.enums.PlaquetteOrientation.DOWN">
-<span class="sig-name descname"><span class="pre">DOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#tqec.enums.PlaquetteOrientation.DOWN" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tqec.enums.PlaquetteOrientation.LEFT">
-<span class="sig-name descname"><span class="pre">LEFT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#tqec.enums.PlaquetteOrientation.LEFT" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tqec.enums.PlaquetteOrientation.RIGHT">
-<span class="sig-name descname"><span class="pre">RIGHT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#tqec.enums.PlaquetteOrientation.RIGHT" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tqec.enums.PlaquetteOrientation.UP">
-<span class="sig-name descname"><span class="pre">UP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#tqec.enums.PlaquetteOrientation.UP" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="tqec.enums.PlaquetteOrientation.to_plaquette_side">
-<span class="sig-name descname"><span class="pre">to_plaquette_side</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#tqec.enums.PlaquetteSide" title="tqec.enums.PlaquetteSide"><span class="pre">PlaquetteSide</span></a></span></span><a class="reference internal" href="../_modules/tqec/enums.html#PlaquetteOrientation.to_plaquette_side"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.enums.PlaquetteOrientation.to_plaquette_side" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="tqec.enums.PlaquetteSide">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PlaquetteSide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tqec/enums.html#PlaquetteSide"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.enums.PlaquetteSide" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
-<p>An enumeration.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tqec.enums.PlaquetteSide.DOWN">
-<span class="sig-name descname"><span class="pre">DOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#tqec.enums.PlaquetteSide.DOWN" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tqec.enums.PlaquetteSide.LEFT">
-<span class="sig-name descname"><span class="pre">LEFT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#tqec.enums.PlaquetteSide.LEFT" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tqec.enums.PlaquetteSide.RIGHT">
-<span class="sig-name descname"><span class="pre">RIGHT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#tqec.enums.PlaquetteSide.RIGHT" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tqec.enums.PlaquetteSide.UP">
-<span class="sig-name descname"><span class="pre">UP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#tqec.enums.PlaquetteSide.UP" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="tqec.enums.TemplateRelativePositionEnum">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TemplateRelativePositionEnum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tqec/enums.html#TemplateRelativePositionEnum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.enums.TemplateRelativePositionEnum" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
-<p>Represent a relative position between two Template instances.</p>
-<p>Template relative positions are stored as the relative displacement needed to
-encode the position. For example, LEFT_OF is encoded as (-1, 0) as a template
-on the left is one unit backwards on the X-axis.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tqec.enums.TemplateRelativePositionEnum.ABOVE_OF">
-<span class="sig-name descname"><span class="pre">ABOVE_OF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Position(x=0,</span> <span class="pre">y=-1)</span></em><a class="headerlink" href="#tqec.enums.TemplateRelativePositionEnum.ABOVE_OF" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tqec.enums.TemplateRelativePositionEnum.BELOW_OF">
-<span class="sig-name descname"><span class="pre">BELOW_OF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Position(x=0,</span> <span class="pre">y=1)</span></em><a class="headerlink" href="#tqec.enums.TemplateRelativePositionEnum.BELOW_OF" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tqec.enums.TemplateRelativePositionEnum.LEFT_OF">
-<span class="sig-name descname"><span class="pre">LEFT_OF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Position(x=-1,</span> <span class="pre">y=0)</span></em><a class="headerlink" href="#tqec.enums.TemplateRelativePositionEnum.LEFT_OF" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="tqec.enums.TemplateRelativePositionEnum.RIGHT_OF">
-<span class="sig-name descname"><span class="pre">RIGHT_OF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Position(x=1,</span> <span class="pre">y=0)</span></em><a class="headerlink" href="#tqec.enums.TemplateRelativePositionEnum.RIGHT_OF" title="Link to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</section>
 <section id="module-tqec.exceptions">
 <span id="tqec-exceptions-module"></span><h2>tqec.exceptions module<a class="headerlink" href="#module-tqec.exceptions" title="Link to this heading"></a></h2>
 <dl class="py exception">
@@ -569,15 +675,61 @@ on the left is one unit backwards on the X-axis.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 </dd></dl>
 
+<dl class="py exception">
+<dt class="sig sig-object py" id="tqec.exceptions.TQECWarning">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TQECWarning</span></span><a class="reference internal" href="../_modules/tqec/exceptions.html#TQECWarning"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.exceptions.TQECWarning" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Warning</span></code></p>
+</dd></dl>
+
 </section>
 <section id="module-tqec.position">
 <span id="tqec-position-module"></span><h2>tqec.position module<a class="headerlink" href="#module-tqec.position" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="tqec.position.Direction3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Direction3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tqec/position.html#Direction3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.position.Direction3D" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>Axis directions in the 3D spacetime diagram.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tqec.position.Direction3D.X">
+<span class="sig-name descname"><span class="pre">X</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#tqec.position.Direction3D.X" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tqec.position.Direction3D.Y">
+<span class="sig-name descname"><span class="pre">Y</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#tqec.position.Direction3D.Y" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tqec.position.Direction3D.Z">
+<span class="sig-name descname"><span class="pre">Z</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#tqec.position.Direction3D.Z" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tqec.position.Direction3D.all">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#tqec.position.Direction3D" title="tqec.position.Direction3D"><span class="pre">Direction3D</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/tqec/position.html#Direction3D.all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.position.Direction3D.all" title="Link to this definition"></a></dt>
+<dd><p>Get all directions.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="tqec.position.Direction3D.axis_index">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">axis_index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#tqec.position.Direction3D.axis_index" title="Link to this definition"></a></dt>
+<dd><p>Get the axis index.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tqec.position.Direction3D.from_axis_index">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_axis_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#tqec.position.Direction3D" title="tqec.position.Direction3D"><span class="pre">Direction3D</span></a></span></span><a class="reference internal" href="../_modules/tqec/position.html#Direction3D.from_axis_index"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.position.Direction3D.from_axis_index" title="Link to this definition"></a></dt>
+<dd><p>Get the direction from the axis index.</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py" id="tqec.position.Displacement">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Displacement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tqec/position.html#Displacement"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.position.Displacement" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Simple wrapper around tuple[int, int].</p>
-<p>This class is here to explicitely name the type of variables as displacements
+<p>This class is here to explicitly name the type of variables as displacements
 instead of having a tuple[int, int] that could be:
 - a position,
 - a shape,
@@ -609,7 +761,8 @@ instead of having a tuple[int, int] that could be:
 <dl class="py method">
 <dt class="sig sig-object py" id="tqec.position.Position.to_grid_qubit">
 <span class="sig-name descname"><span class="pre">to_grid_qubit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/tqec/position.html#Position.to_grid_qubit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.position.Position.to_grid_qubit" title="Link to this definition"></a></dt>
-<dd><p>Returns the position as a tuple following the cirq.GridQubit coordinate system.</p>
+<dd><p>Returns the position as a tuple following the cirq.GridQubit
+coordinate system.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -620,6 +773,47 @@ instead of having a tuple[int, int] that could be:
 <dl class="py attribute">
 <dt class="sig sig-object py" id="tqec.position.Position.y">
 <span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#tqec.position.Position.y" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="tqec.position.Position3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Position3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tqec/position.html#Position3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.position.Position3D" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A 3D integer position.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="tqec.position.Position3D.as_tuple">
+<span class="sig-name descname"><span class="pre">as_tuple</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/tqec/position.html#Position3D.as_tuple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.position.Position3D.as_tuple" title="Link to this definition"></a></dt>
+<dd><p>Return the position as a tuple.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tqec.position.Position3D.is_neighbour">
+<span class="sig-name descname"><span class="pre">is_neighbour</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#tqec.position.Position3D" title="tqec.position.Position3D"><span class="pre">Position3D</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../_modules/tqec/position.html#Position3D.is_neighbour"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.position.Position3D.is_neighbour" title="Link to this definition"></a></dt>
+<dd><p>Check if the other position is near to this position, i.e. Manhattan
+distance is 1.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="tqec.position.Position3D.shift_by">
+<span class="sig-name descname"><span class="pre">shift_by</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dy</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dz</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#tqec.position.Position3D" title="tqec.position.Position3D"><span class="pre">Position3D</span></a></span></span><a class="reference internal" href="../_modules/tqec/position.html#Position3D.shift_by"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.position.Position3D.shift_by" title="Link to this definition"></a></dt>
+<dd><p>Shift the position by the given offset.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tqec.position.Position3D.x">
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#tqec.position.Position3D.x" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tqec.position.Position3D.y">
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#tqec.position.Position3D.y" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="tqec.position.Position3D.z">
+<span class="sig-name descname"><span class="pre">z</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#tqec.position.Position3D.z" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -639,9 +833,10 @@ instead of having a tuple[int, int] that could be:
 <dt class="sig sig-object py" id="tqec.position.Shape2D.to_numpy_shape">
 <span class="sig-name descname"><span class="pre">to_numpy_shape</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/tqec/position.html#Shape2D.to_numpy_shape"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tqec.position.Shape2D.to_numpy_shape" title="Link to this definition"></a></dt>
 <dd><p>Returns the shape according to numpy indexing.</p>
-<p>In the coordinate system used in this library, numpy indexes arrays
-using (y, x) coordinates. This method is here to translate a Shape
-instance to a numpy shape transparently for the user.</p>
+<p>In the coordinate system used in this library, numpy indexes
+arrays using (y, x) coordinates. This method is here to
+translate a Shape instance to a numpy shape transparently for
+the user.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -657,18 +852,15 @@ instance to a numpy shape transparently for the user.</p>
 </dd></dl>
 
 </section>
-<section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<section id="module-tqec">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-tqec" title="Link to this heading"></a></h2>
 </section>
 </section>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../index.html" class="btn btn-neutral float-left" title="TQEC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="tqec.circuit.html" class="btn btn-neutral float-right" title="tqec.circuit package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

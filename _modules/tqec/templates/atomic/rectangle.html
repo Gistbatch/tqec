@@ -17,6 +17,7 @@
         <script src="../../../../_static/documentation_options.js?v=5929fcd5"></script>
         <script src="../../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
@@ -41,9 +42,13 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../detectors.html">Automatic detector computation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Notebooks:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../source/tqec.html">tqec package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../media/detectors/detector_computation_illustration.html">Automatic detector computation</a></li>
 </ul>
 
         </div>
@@ -74,10 +79,12 @@
 <span></span><span class="kn">import</span> <span class="nn">typing</span> <span class="k">as</span> <span class="nn">ty</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">numpy.typing</span> <span class="k">as</span> <span class="nn">npt</span>
+
 <span class="kn">from</span> <span class="nn">tqec.exceptions</span> <span class="kn">import</span> <span class="n">TQECException</span>
-<span class="kn">from</span> <span class="nn">tqec.position</span> <span class="kn">import</span> <span class="n">Shape2D</span>
 <span class="kn">from</span> <span class="nn">tqec.templates.base</span> <span class="kn">import</span> <span class="n">Template</span>
-<span class="kn">from</span> <span class="nn">tqec.templates.scale</span> <span class="kn">import</span> <span class="n">Dimension</span>
+<span class="kn">from</span> <span class="nn">tqec.templates.enums</span> <span class="kn">import</span> <span class="n">TemplateOrientation</span>
+<span class="kn">from</span> <span class="nn">tqec.templates.scale</span> <span class="kn">import</span> <span class="n">LinearFunction</span><span class="p">,</span> <span class="n">PiecewiseLinearFunction</span><span class="p">,</span> <span class="n">Scalable2D</span>
 
 
 <div class="viewcode-block" id="AlternatingRectangleTemplate">
@@ -85,16 +92,19 @@
 <span class="k">class</span> <span class="nc">AlternatingRectangleTemplate</span><span class="p">(</span><span class="n">Template</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">width</span><span class="p">:</span> <span class="n">Dimension</span><span class="p">,</span>
-        <span class="n">height</span><span class="p">:</span> <span class="n">Dimension</span><span class="p">,</span>
+        <span class="n">width</span><span class="p">:</span> <span class="n">LinearFunction</span><span class="p">,</span>
+        <span class="n">height</span><span class="p">:</span> <span class="n">LinearFunction</span><span class="p">,</span>
+        <span class="n">k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
         <span class="n">default_x_increment</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
         <span class="n">default_y_increment</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Implements an atomic rectangular template with alternating plaquettes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Implements an atomic rectangular template with alternating</span>
+<span class="sd">        plaquettes.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            width: rectangle width.</span>
 <span class="sd">            height: rectangle height.</span>
+<span class="sd">            k: initial value for the scaling parameter.</span>
 <span class="sd">            default_x_increment: default increment in the x direction between two plaquettes.</span>
 <span class="sd">            default_y_increment: default increment in the y direction between two plaquettes.</span>
 
@@ -102,12 +112,12 @@
 <span class="sd">            The following code:</span>
 <span class="sd">            .. code-block:: python</span>
 
-<span class="sd">                from tqec.templates.scale import Dimension</span>
+<span class="sd">                from tqec.templates.scale import LinearFunction</span>
 <span class="sd">                from tqec.templates.atomic.rectangle import AlternatingRectangleTemplate</span>
 <span class="sd">                from tqec.display import display_template</span>
 
-<span class="sd">                width = Dimension(2, scaling_function=lambda k: 2*k)</span>
-<span class="sd">                height = Dimension(3, scaling_function=lambda k: 3*k)</span>
+<span class="sd">                width = LinearFunction(2, 0)</span>
+<span class="sd">                height = LinearFunction(3, 0)</span>
 <span class="sd">                template = AlternatingRectangleTemplate(width, height)</span>
 
 <span class="sd">                print(&quot;Non-scaled template:&quot;)</span>
@@ -130,13 +140,15 @@
 <span class="sd">                1  2</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">default_x_increment</span><span class="p">,</span> <span class="n">default_y_increment</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">default_x_increment</span><span class="p">,</span> <span class="n">default_y_increment</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="o">=</span> <span class="n">width</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span> <span class="o">=</span> <span class="n">height</span>
 
 <div class="viewcode-block" id="AlternatingRectangleTemplate.instantiate">
 <a class="viewcode-back" href="../../../../source/tqec.templates.atomic.html#tqec.templates.atomic.rectangle.AlternatingRectangleTemplate.instantiate">[docs]</a>
-    <span class="k">def</span> <span class="nf">instantiate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plaquette_indices</span><span class="p">:</span> <span class="n">ty</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">instantiate</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">plaquette_indices</span><span class="p">:</span> <span class="n">ty</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">int_</span><span class="p">]:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_plaquette_number</span><span class="p">(</span><span class="n">plaquette_indices</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
         <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">plaquette_indices</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">to_numpy_shape</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
@@ -149,30 +161,37 @@
         <span class="k">return</span> <span class="n">ret</span></div>
 
 
-<div class="viewcode-block" id="AlternatingRectangleTemplate.scale_to">
-<a class="viewcode-back" href="../../../../source/tqec.templates.atomic.html#tqec.templates.atomic.rectangle.AlternatingRectangleTemplate.scale_to">[docs]</a>
-    <span class="k">def</span> <span class="nf">scale_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;AlternatingRectangleTemplate&quot;</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="o">.</span><span class="n">scale_to</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="o">.</span><span class="n">scale_to</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span></div>
-
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">shape</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Shape2D</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">Shape2D</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-
-<div class="viewcode-block" id="AlternatingRectangleTemplate.to_dict">
-<a class="viewcode-back" href="../../../../source/tqec.templates.atomic.html#tqec.templates.atomic.rectangle.AlternatingRectangleTemplate.to_dict">[docs]</a>
-    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ty</span><span class="o">.</span><span class="n">Any</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span> <span class="o">|</span> <span class="p">{</span>
-            <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span>
-            <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(),</span>
-        <span class="p">}</span></div>
-
-
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">expected_plaquettes_number</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">2</span></div>
+        <span class="k">return</span> <span class="mi">2</span>
+
+<div class="viewcode-block" id="AlternatingRectangleTemplate.get_midline_plaquettes">
+<a class="viewcode-back" href="../../../../source/tqec.templates.atomic.html#tqec.templates.atomic.rectangle.AlternatingRectangleTemplate.get_midline_plaquettes">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_midline_plaquettes</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">orientation</span><span class="p">:</span> <span class="n">TemplateOrientation</span> <span class="o">=</span> <span class="n">TemplateOrientation</span><span class="o">.</span><span class="n">HORIZONTAL</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
+        <span class="n">midline_shape</span><span class="p">,</span> <span class="n">iteration_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">y</span>
+        <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="n">TemplateOrientation</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">:</span>
+            <span class="n">midline_shape</span><span class="p">,</span> <span class="n">iteration_shape</span> <span class="o">=</span> <span class="n">iteration_shape</span><span class="p">,</span> <span class="n">midline_shape</span>
+
+        <span class="k">if</span> <span class="n">midline_shape</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">TQECException</span><span class="p">(</span>
+                <span class="s2">&quot;Midline is not defined for odd &quot;</span>
+                <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;height&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">orientation</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">TemplateOrientation</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;width&#39;</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+        <span class="n">midline</span> <span class="o">=</span> <span class="n">midline_shape</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="n">TemplateOrientation</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[(</span><span class="n">row</span><span class="p">,</span> <span class="n">midline</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iteration_shape</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="p">[(</span><span class="n">midline</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iteration_shape</span><span class="p">)]</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">scalable_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Scalable2D</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a scalable version of the template shape.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Scalable2D</span><span class="p">(</span>
+            <span class="n">PiecewiseLinearFunction</span><span class="o">.</span><span class="n">from_linear_function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_width</span><span class="p">),</span>
+            <span class="n">PiecewiseLinearFunction</span><span class="o">.</span><span class="n">from_linear_function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">),</span>
+        <span class="p">)</span></div>
 
 
 
@@ -186,8 +205,7 @@
         <span class="n">default_x_increment</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
         <span class="n">default_y_increment</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Implements an atomic rectangular template with user-provided</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Implements an atomic rectangular template with user-provided</span>
 <span class="sd">        plaquette distribution.</span>
 
 <span class="sd">        User-provided ``indices`` defines the width and height of the template.</span>
@@ -232,12 +250,12 @@
 <span class="sd">                2  2</span>
 <span class="sd">                1  4</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">default_x_increment</span><span class="p">,</span> <span class="n">default_y_increment</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">default_x_increment</span><span class="p">,</span> <span class="n">default_y_increment</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">indices</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">indices</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
             <span class="k">raise</span> <span class="n">TQECException</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;You should provide at least one index to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">.&quot;</span>
             <span class="p">)</span>
-        <span class="n">line_lens</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">)</span>
+        <span class="n">line_lens</span> <span class="o">=</span> <span class="p">{</span><span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">}</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line_lens</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">TQECException</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;The 2-dimensional array provided to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> should &quot;</span>
@@ -259,45 +277,60 @@
 
 <div class="viewcode-block" id="RawRectangleTemplate.instantiate">
 <a class="viewcode-back" href="../../../../source/tqec.templates.atomic.html#tqec.templates.atomic.rectangle.RawRectangleTemplate.instantiate">[docs]</a>
-    <span class="k">def</span> <span class="nf">instantiate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plaquette_indices</span><span class="p">:</span> <span class="n">ty</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">instantiate</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">plaquette_indices</span><span class="p">:</span> <span class="n">ty</span><span class="o">.</span><span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">int_</span><span class="p">]:</span>
         <span class="c1"># Warning: self.expected_plaquettes_number is only guaranteed to be correct</span>
         <span class="c1">#          here because RawRectangleTemplate is annotated as final.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_plaquette_number</span><span class="p">(</span><span class="n">plaquette_indices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">expected_plaquettes_number</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># Use numpy indexing to instantiate the raw values.</span>
-            <span class="n">plaquette_indices_array</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">plaquette_indices</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
-            <span class="n">indices</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indices</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+            <span class="n">plaquette_indices_array</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">plaquette_indices</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int_</span><span class="p">)</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indices</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">int_</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">plaquette_indices_array</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
-        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="k">except</span> <span class="ne">IndexError</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">TQECException</span><span class="p">(</span>
                 <span class="s2">&quot;RawRectangleTemplate instances should be constructed with 2-dimensional arrays &quot;</span>
                 <span class="s2">&quot;that contain indices that will index the plaquette_indices provided to &quot;</span>
-                <span class="s2">&quot;this method. The bigest index you provided at this instance creation is &quot;</span>
+                <span class="s2">&quot;this method. The biggest index you provided at this instance creation is &quot;</span>
                 <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">_indices</span><span class="p">)</span><span class="si">}</span><span class="s2"> &quot;</span>
                 <span class="sa">f</span><span class="s2">&quot;but you provided only </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">plaquette_indices</span><span class="p">)</span><span class="si">}</span><span class="s2"> plaquette indices &quot;</span>
                 <span class="s2">&quot;when calling this method.&quot;</span>
-            <span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="RawRectangleTemplate.scale_to">
-<a class="viewcode-back" href="../../../../source/tqec.templates.atomic.html#tqec.templates.atomic.rectangle.RawRectangleTemplate.scale_to">[docs]</a>
-    <span class="k">def</span> <span class="nf">scale_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;RawRectangleTemplate&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">self</span></div>
+            <span class="p">)</span> <span class="kn">from</span> <span class="nn">ex</span></div>
 
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">shape</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Shape2D</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">Shape2D</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indices</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indices</span><span class="p">))</span>
-
-<div class="viewcode-block" id="RawRectangleTemplate.to_dict">
-<a class="viewcode-back" href="../../../../source/tqec.templates.atomic.html#tqec.templates.atomic.rectangle.RawRectangleTemplate.to_dict">[docs]</a>
-    <span class="k">def</span> <span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ty</span><span class="o">.</span><span class="n">Any</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span> <span class="o">|</span> <span class="p">{</span><span class="s2">&quot;indices&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indices</span><span class="p">}</span></div>
-
+    <span class="k">def</span> <span class="nf">scalable_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Scalable2D</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a scalable version of the template shape.&quot;&quot;&quot;</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indices</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_indices</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Scalable2D</span><span class="p">(</span>
+            <span class="n">PiecewiseLinearFunction</span><span class="o">.</span><span class="n">from_linear_function</span><span class="p">(</span><span class="n">LinearFunction</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">)),</span>
+            <span class="n">PiecewiseLinearFunction</span><span class="o">.</span><span class="n">from_linear_function</span><span class="p">(</span><span class="n">LinearFunction</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">)),</span>
+        <span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">expected_plaquettes_number</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indices</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span></div>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indices</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<div class="viewcode-block" id="RawRectangleTemplate.get_midline_plaquettes">
+<a class="viewcode-back" href="../../../../source/tqec.templates.atomic.html#tqec.templates.atomic.rectangle.RawRectangleTemplate.get_midline_plaquettes">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_midline_plaquettes</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">orientation</span><span class="p">:</span> <span class="n">TemplateOrientation</span> <span class="o">=</span> <span class="n">TemplateOrientation</span><span class="o">.</span><span class="n">HORIZONTAL</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]]:</span>
+        <span class="n">midline_shape</span><span class="p">,</span> <span class="n">iteration_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">y</span>
+        <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="n">TemplateOrientation</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">:</span>
+            <span class="n">midline_shape</span><span class="p">,</span> <span class="n">iteration_shape</span> <span class="o">=</span> <span class="n">iteration_shape</span><span class="p">,</span> <span class="n">midline_shape</span>
+
+        <span class="k">if</span> <span class="n">midline_shape</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">TQECException</span><span class="p">(</span>
+                <span class="s2">&quot;Midline is not defined for odd &quot;</span>
+                <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;height&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">orientation</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">TemplateOrientation</span><span class="o">.</span><span class="n">HORIZONTAL</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;width&#39;</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+        <span class="n">midline</span> <span class="o">=</span> <span class="n">midline_shape</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">orientation</span> <span class="o">==</span> <span class="n">TemplateOrientation</span><span class="o">.</span><span class="n">VERTICAL</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[(</span><span class="n">row</span><span class="p">,</span> <span class="n">midline</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iteration_shape</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="p">[(</span><span class="n">midline</span><span class="p">,</span> <span class="n">column</span><span class="p">)</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iteration_shape</span><span class="p">)]</span></div>
+</div>
 
 </pre></div>
 
